@@ -1,154 +1,87 @@
-/* =======================================
-   GLOBAL
-======================================= */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Inter, sans-serif;
-  background: radial-gradient(circle at top, #2a2a2a, #0a0a0a 60%, #000);
-  color: white;
+    margin: 0;
+    font-family: Inter, Arial;
+    background: radial-gradient(circle at top, #1a1a1a 0%, #000 80%);
+    color: #fff;
 }
 
-/* =======================================
-   WRAPPER
-======================================= */
-.linkhub-wrapper {
-  display: flex;
-  justify-content: center;
-  padding: 48px 16px;
+.container {
+    max-width: 450px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
 }
 
-/* CARD */
-.linkhub-card {
-  width: 100%;
-  max-width: 500px;
-  padding: 32px 24px;
-  border-radius: 22px;
-  background: rgba(0,0,0,0.4);
-  box-shadow: 0 0 25px rgba(255,215,0,0.15);
-  border: 1px solid rgba(255,215,0,0.2);
-  backdrop-filter: blur(14px);
+.logo {
+    width: 110px;
+    border-radius: 50%;
+    border: 3px solid #d4af37;
+    padding: 5px;
 }
 
-/* LOGO */
-.linkhub-avatar {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 12px;
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 15px;
+    color: #ffd84d;
 }
 
-.linkhub-circle {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid gold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: black;
+.subtitle {
+    font-size: 15px;
+    opacity: .8;
+    margin-bottom: 35px;
 }
 
-.linkhub-circle img {
-  width: 100%;
-  height: auto;
+/* CARD STYLE */
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 215, 0, 0.12);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    padding: 18px 22px;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    transition: .2s;
+    text-decoration: none;
+    color: #fff;
 }
 
-/* TITLE */
-.linkhub-title {
-  text-align: center;
-  margin-bottom: 30px;
-}
-.linkhub-title h1 {
-  font-size: 30px;
-  margin: 8px 0;
-  color: gold;
-}
-.linkhub-title p {
-  opacity: 0.8;
-  font-size: 15px;
+.card:hover {
+    background: rgba(255, 215, 0, 0.22);
+    transform: translateY(-2px);
 }
 
-/* =======================================
-   TOMBOL — GOLD PREMIUM
-======================================= */
-.linkhub-links {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.icon { font-size: 22px; }
+.text { font-size: 17px; font-weight: 600; }
+.arrow { font-size: 20px; }
+
+/* DROPDOWN */
+.dropdown { position: relative; cursor: pointer; }
+
+.card-main { display: flex; justify-content: space-between; width: 100%; }
+
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 14px;
+    margin-top: 10px;
 }
 
-.gold-btn {
-  background: linear-gradient(135deg, #423700, #a68500);
-  border: 1px solid gold;
-  box-shadow: 0 0 10px rgba(255,215,0,0.4);
+.dropdown-content.show { display: flex; }
+
+.sub-btn {
+    padding: 14px;
+    color: #ffd64d;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.gold-btn:hover {
-  background: linear-gradient(135deg, #5a4a00, #c19a00);
-  transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(255,215,0,0.7);
-}
+.sub-btn:last-child { border-bottom: none; }
 
-.linkhub-item {
-  padding: 16px 20px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  color: white;
-  text-decoration: none;
-  transition: 0.25s;
-}
-
-/* TEXT */
-.linkhub-text strong {
-  font-size: 17px;
-}
-.linkhub-text span {
-  font-size: 13px;
-  opacity: 0.9;
-}
-
-/* ICON KANAN */
-.linkhub-arrow {
-  margin-left: auto;
-  opacity: 0.85;
-}
-
-/* =======================================
-   DROPDOWN ORDER
-======================================= */
-.linkhub-dropdown {
-  cursor: pointer;
-}
-.linkhub-dropdown.open .linkhub-arrow {
-  transform: rotate(180deg);
-}
-
-/* SUBMENU */
-.linkhub-submenu {
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.linkhub-dropdown.open .linkhub-submenu {
-  display: flex;
-}
-
-.gold-sub {
-  background: black;
-  border: 1px solid gold;
-  padding: 12px 14px;
-  border-radius: 10px;
-  color: gold;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.gold-sub:hover {
-  background: #2a2000;
-  box-shadow: 0 0 12px gold;
+.sub-btn:hover {
+    background: rgba(255, 215, 0, 0.12);
 }
