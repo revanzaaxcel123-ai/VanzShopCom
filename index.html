@@ -1,105 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VanzShop.id — Premium Hub</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VanzShop.id</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <div class="container">
+        
+        <!-- LOGO -->
+        <img src="assets/logo.png" class="logo" alt="logo">
 
-<!-- WRAPPER -->
-<section class="linkhub-wrapper">
-  <div class="linkhub-card">
+        <h1 class="title">VanzShop.id</h1>
+        <p class="subtitle">✨ Solusi Produk Digital Terbaik ✨</p>
 
-    <!-- AVATAR / LOGO -->
-    <div class="linkhub-avatar">
-      <div class="linkhub-circle">
-        <img src="assets/logo.png" alt="logo">
-      </div>
-    </div>
+        <!-- ORDER -->
+        <div class="card dropdown">
+            <div class="card-main" onclick="toggleDropdown()">
+                <span class="icon">🛒</span>
+                <span class="text">Order Sekarang (24/7)</span>
+                <span class="arrow">▼</span>
+            </div>
 
-    <div class="linkhub-title">
-      <h1>VanzShop.id</h1>
-      <p>✨ Solusi Produk Digital Terbaik ✨</p>
-    </div>
-
-    <!-- LINK LIST -->
-    <div class="linkhub-links">
-
-      <!-- ORDER DROPDOWN -->
-      <div class="linkhub-item linkhub-dropdown gold-btn">
-        <div class="linkhub-left">
-          <div class="linkhub-icon">🛒</div>
+            <div class="dropdown-content" id="dropdownMenu">
+                <a href="YOUR_WEBSTORE_LINK" class="sub-btn">Beli via Webstore</a>
+                <a href="https://t.me/VanzShopBot" class="sub-btn">Bot Telegram Auto Order</a>
+            </div>
         </div>
 
-        <div class="linkhub-text">
-          <strong>Order Sekarang (24/7)</strong>
-          <span>Pilih metode pemesanan</span>
-        </div>
+        <!-- WA -->
+        <a href="https://wa.me/62895415204928" class="card">
+            <span class="icon">💬</span>
+            <span class="text">WhatsApp Admin</span>
+            <span class="arrow">→</span>
+        </a>
 
-        <div class="linkhub-arrow">▼</div>
+        <!-- EMAIL -->
+        <a href="https://vanzmail.web.id" class="card">
+            <span class="icon">📧</span>
+            <span class="text">Akses Email</span>
+            <span class="arrow">→</span>
+        </a>
 
-        <div class="linkhub-submenu">
-          <a href="/#produk" class="submenu-btn gold-sub">Beli via Webstore</a>
-          <a href="https://t.me/VanzShopBot" target="_blank" class="submenu-btn gold-sub">@VanzShopBot (Auto Order)</a>
-        </div>
-      </div>
+        <!-- GARANSI -->
+        <a class="card">
+            <span class="icon">🛡️</span>
+            <span class="text">Ketentuan Garansi</span>
+            <span class="arrow">→</span>
+        </a>
 
-      <!-- WHATSAPP -->
-      <a class="linkhub-item gold-btn" href="https://wa.me/62895415204928" target="_blank">
-        <div class="linkhub-icon">💬</div>
-        <div class="linkhub-text">
-          <strong>WhatsApp Admin</strong>
-          <span>0895 4152 04928</span>
-        </div>
-        <div class="linkhub-arrow">➜</div>
-      </a>
-
-      <!-- EMAIL -->
-      <a class="linkhub-item gold-btn" href="https://vanzmail.web.id" target="_blank">
-        <div class="linkhub-icon">📧</div>
-        <div class="linkhub-text">
-          <strong>Akses Email</strong>
-          <span>Menuju vanzmail.web.id</span>
-        </div>
-        <div class="linkhub-arrow">➜</div>
-      </a>
-
-      <!-- GARANSI -->
-      <a class="linkhub-item gold-btn" href="#">
-        <div class="linkhub-icon">🛡️</div>
-        <div class="linkhub-text">
-          <strong>Ketentuan Garansi</strong>
-          <span>Coming soon...</span>
-        </div>
-        <div class="linkhub-arrow">➜</div>
-      </a>
-
-      <!-- FAQ -->
-      <a class="linkhub-item gold-btn" href="https://vanzshop.com" target="_blank">
-        <div class="linkhub-icon">❓</div>
-        <div class="linkhub-text">
-          <strong>FAQ</strong>
-          <span>Pertanyaan yang sering ditanyakan</span>
-        </div>
-        <div class="linkhub-arrow">➜</div>
-      </a>
+        <!-- FAQ -->
+        <a href="https://vanzshop.com" class="card">
+            <span class="icon">❓</span>
+            <span class="text">FAQ</span>
+            <span class="arrow">→</span>
+        </a>
 
     </div>
-
-  </div>
-</section>
-
 
 <script>
-  // Dropdown toggle
-  document.querySelectorAll(".linkhub-dropdown").forEach(drop => {
-    drop.addEventListener("click", () => {
-      drop.classList.toggle("open");
-    });
-  });
+function toggleDropdown() {
+    document.getElementById("dropdownMenu").classList.toggle("show");
+}
 </script>
 
 </body>
