@@ -1,0 +1,154 @@
+/* =======================================
+   GLOBAL
+======================================= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, sans-serif;
+  background: radial-gradient(circle at top, #2a2a2a, #0a0a0a 60%, #000);
+  color: white;
+}
+
+/* =======================================
+   WRAPPER
+======================================= */
+.linkhub-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+/* CARD */
+.linkhub-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 32px 24px;
+  border-radius: 22px;
+  background: rgba(0,0,0,0.4);
+  box-shadow: 0 0 25px rgba(255,215,0,0.15);
+  border: 1px solid rgba(255,215,0,0.2);
+  backdrop-filter: blur(14px);
+}
+
+/* LOGO */
+.linkhub-avatar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.linkhub-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+}
+
+.linkhub-circle img {
+  width: 100%;
+  height: auto;
+}
+
+/* TITLE */
+.linkhub-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.linkhub-title h1 {
+  font-size: 30px;
+  margin: 8px 0;
+  color: gold;
+}
+.linkhub-title p {
+  opacity: 0.8;
+  font-size: 15px;
+}
+
+/* =======================================
+   TOMBOL — GOLD PREMIUM
+======================================= */
+.linkhub-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gold-btn {
+  background: linear-gradient(135deg, #423700, #a68500);
+  border: 1px solid gold;
+  box-shadow: 0 0 10px rgba(255,215,0,0.4);
+}
+
+.gold-btn:hover {
+  background: linear-gradient(135deg, #5a4a00, #c19a00);
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(255,215,0,0.7);
+}
+
+.linkhub-item {
+  padding: 16px 20px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: white;
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+/* TEXT */
+.linkhub-text strong {
+  font-size: 17px;
+}
+.linkhub-text span {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* ICON KANAN */
+.linkhub-arrow {
+  margin-left: auto;
+  opacity: 0.85;
+}
+
+/* =======================================
+   DROPDOWN ORDER
+======================================= */
+.linkhub-dropdown {
+  cursor: pointer;
+}
+.linkhub-dropdown.open .linkhub-arrow {
+  transform: rotate(180deg);
+}
+
+/* SUBMENU */
+.linkhub-submenu {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.linkhub-dropdown.open .linkhub-submenu {
+  display: flex;
+}
+
+.gold-sub {
+  background: black;
+  border: 1px solid gold;
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: gold;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.gold-sub:hover {
+  background: #2a2000;
+  box-shadow: 0 0 12px gold;
+}
