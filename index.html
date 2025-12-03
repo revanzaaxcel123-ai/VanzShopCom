@@ -25,11 +25,10 @@
 
     *,*::before,*::after{box-sizing:border-box;}
     html,body{margin:0;padding:0;}
-
     body{
       min-height:100vh;
       font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:#050509;
+      background:var(--bg);
       color:var(--text);
       display:flex;
       align-items:center;
@@ -37,17 +36,16 @@
       overflow-x:hidden;
     }
 
-    /* ===== GLOBAL BG + EFFECT ===== */
+    /* BG */
     .page-bg{
       position:fixed;
       inset:0;
       z-index:0;
       pointer-events:none;
       background:
-        radial-gradient(circle at 15% 0%, rgba(40,40,90,0.85), transparent 60%),
+        radial-gradient(circle at 15% 0%, rgba(40,40,80,0.85), transparent 60%),
         radial-gradient(circle at 50% 120%, rgba(8,8,18,0.9), #050509 70%);
     }
-
     .page-bg::after{
       content:"";
       position:absolute;
@@ -60,7 +58,6 @@
       opacity:.9;
       mix-blend-mode:screen;
     }
-
     .orb{
       position:absolute;
       border-radius:999px;
@@ -78,7 +75,7 @@
       100%{transform:translate3d(-12px,-6px,0);opacity:.5;}
     }
 
-    /* ===== LAYOUT CARD ===== */
+    /* LAYOUT */
     .shell{
       width:100%;
       max-width:480px;
@@ -86,53 +83,49 @@
       position:relative;
       z-index:1;
     }
-
     .card{
       background:radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 55%),var(--card);
       border-radius:var(--radius-card);
-      padding:30px 24px 26px;
-      border:1px solid var(--border-soft);
       box-shadow:var(--shadow-soft);
+      padding:30px 24px 28px;
+      border:1px solid rgba(255,255,255,0.04);
     }
 
-    /* ===== LOGO ===== */
+    /* LOGO */
     .logo-wrap{
       display:flex;
       justify-content:center;
       margin-bottom:14px;
     }
-
     .logo-circle{
-      width:118px;
-      height:118px;
+      width:92px;
+      height:92px;
       border-radius:999px;
       overflow:hidden;
       background:radial-gradient(circle at 30% 20%, #fff7c8 0%, #ffe083 35%, #d4a937 70%, #7f6518 100%);
-      border:2px solid rgba(255,220,140,0.65);
+      border:2px solid rgba(255,220,140,0.6);
       box-shadow:
-        0 14px 36px rgba(0,0,0,0.9),
-        inset 0 7px 12px rgba(255,255,255,0.23),
-        inset 0 -7px 12px rgba(0,0,0,0.45);
+        0 15px 40px rgba(0,0,0,0.85),
+        inset 0 6px 10px rgba(255,255,255,0.22),
+        inset 0 -6px 10px rgba(0,0,0,0.45);
       display:flex;
       align-items:center;
       justify-content:center;
     }
-
     .logo-circle img{
-      width:94%;
-      height:94%;
+      width:97%;
+      height:97%;
       object-fit:contain;
       border-radius:50%;
     }
 
-    /* ===== TITLE ===== */
     .headline-wrap{
       text-align:center;
-      margin-bottom:20px;
+      margin-bottom:22px;
     }
-    .brand{
-      margin:0 0 4px;
-      font-size:1.5rem;
+    .headline-wrap h1{
+      margin:4px 0 4px;
+      font-size:1.6rem;
       color:var(--accent-strong);
     }
     .tagline{
@@ -141,106 +134,134 @@
       color:var(--text-muted);
     }
 
-    /* ===== LINK BUTTONS ===== */
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--accent-soft);
+      color:var(--accent-strong);
+      font-size:.78rem;
+    }
+
+    /* BUTTON BASE */
     .link-btn{
       width:100%;
+      border:none;
+      outline:none;
+      text-decoration:none;
       display:flex;
+      justify-content:center; /* center text */
       align-items:center;
-      justify-content:space-between;
-      gap:10px;
       padding:12px 16px;
-      margin-top:10px;
       border-radius:var(--radius-btn);
+      cursor:pointer;
       background:#101018;
       border:1px solid var(--border-soft);
-      color:#fff;
-      text-decoration:none;
-      cursor:pointer;
-      transition:
-        transform .1s ease-out,
-        box-shadow .12s ease-out,
-        border-color .12s ease-out,
-        background .12s ease-out;
+      color:var(--text);
+      transition:transform .1s ease-out,box-shadow .12s ease-out,border-color .12s ease-out,background .12s ease-out;
+      margin-top:10px;
     }
-
-    .link-btn-primary{
-      background:linear-gradient(135deg,#2b2412,#141419);
-      border-color:rgba(247,212,106,0.65);
-      box-shadow:0 12px 30px rgba(0,0,0,0.9);
-    }
-
     .link-btn:hover{
       transform:translateY(-1px);
-      border-color:rgba(247,212,106,0.65);
-      box-shadow:0 16px 38px rgba(0,0,0,0.95);
+      box-shadow:0 16px 38px rgba(0,0,0,0.9);
+      border-color:rgba(247,212,106,0.6);
       background:linear-gradient(135deg,#181821,#1d1d25);
     }
-
+    .link-btn-primary{
+      background:linear-gradient(135deg,#2b2412,#141419);
+      border-color:rgba(247,212,106,0.6);
+      box-shadow:0 12px 30px rgba(0,0,0,0.9);
+      animation:pulse 2.8s infinite ease-in-out;
+    }
     .link-btn-primary:hover{
       background:linear-gradient(135deg,#3c3217,#171722);
     }
 
-    .btn-left{display:flex;align-items:center;gap:10px;}
-    .btn-right{display:flex;align-items:center;gap:8px;}
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 rgba(247,212,106,0);}
+      50%{box-shadow:0 0 18px rgba(247,212,106,0.35);}
+      100%{box-shadow:0 0 0 rgba(247,212,106,0);}
+    }
+
+    .btn-content{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-align:center;
+    }
     .btn-icon{
-      width:28px;height:28px;
-      display:flex;align-items:center;justify-content:center;
+      width:28px;
+      height:28px;
       border-radius:999px;
       background:rgba(0,0,0,0.55);
-      font-size:1.12rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.1rem;
     }
-    .btn-text{font-size:.95rem;font-weight:500;}
-    .btn-arrow{font-size:1.05rem;opacity:.9;}
+    .btn-text{
+      font-size:.96rem;
+      font-weight:500;
+      letter-spacing:.01em;
+      white-space:nowrap;
+    }
     .btn-pill{
-      font-size:.75rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       padding:2px 8px;
       border-radius:999px;
-      background:rgba(0,0,0,0.55);
+      background:rgba(0,0,0,0.4);
       border:1px solid rgba(247,212,106,0.6);
+      font-size:.7rem;
+      margin-left:6px;
       color:var(--accent-strong);
     }
 
-    /* ===== ORDER GROUP + SUBMENU ===== */
-    .link-group{margin-bottom:4px;}
-
+    /* SUBMENU */
+    .link-group{margin-bottom:6px;}
     .link-submenu{
+      margin-top:6px;
+      border-radius:20px;
+      background:rgba(9,9,15,0.92);
+      border:1px solid rgba(255,255,255,0.06);
+      padding:6px;
       display:none;
-      flex-direction:column;
-      gap:6px;
-      margin-top:8px;
     }
-    .link-submenu.open{display:flex;}
-
+    .link-submenu.open{display:block;}
     .sub-link{
       display:flex;
+      justify-content:center;
       align-items:center;
-      justify-content:space-between;
-      padding:9px 13px;
+      padding:8px 10px;
       border-radius:14px;
-      background:rgba(9,9,16,0.94);
-      border:1px solid rgba(255,255,255,0.02);
       text-decoration:none;
-      color:var(--text-muted);
-      font-size:.85rem;
-      transition:
-        background .12s ease-out,
-        border-color .12s ease-out,
-        transform .1s ease-out;
+      color:var(--text);
+      font-size:.86rem;
+      transition:background .12s,border-color .12s,transform .08s;
+      border:1px solid transparent;
     }
-
+    .sub-link span{display:inline-flex;align-items:center;gap:6px;}
     .sub-link:hover{
-      background:linear-gradient(135deg,#171729,#11111a);
-      border-color:rgba(247,212,106,0.4);
-      color:#fefefe;
+      background:rgba(255,255,255,0.03);
+      border-color:rgba(247,212,106,0.45);
       transform:translateY(-1px);
     }
 
-    .sub-arrow{opacity:.8;}
+    /* FOOTER */
+    .footer-note{
+      margin-top:20px;
+      text-align:center;
+      font-size:.8rem;
+      color:var(--text-muted);
+      opacity:.85;
+    }
 
-    @media (max-width:480px){
-      .card{padding:26px 18px 22px;}
-      .brand{font-size:1.35rem;}
-      .logo-circle{width:108px;height:108px;}
+    @media(max-width:480px){
+      .headline-wrap h1{font-size:1.4rem;}
+      .btn-text{font-size:.9rem;}
     }
   </style>
 </head>
@@ -252,115 +273,98 @@
   </div>
 
   <main class="shell">
-    <section class="card main-card">
+    <section class="card">
       <!-- Logo -->
       <div class="logo-wrap">
         <div class="logo-circle">
-          <!-- pastikan file ini bernama logo.png -->
           <img src="logo.png" alt="Logo VanzShop.com">
         </div>
       </div>
 
-      <!-- Nama & tagline -->
+      <!-- Brand + tagline -->
       <div class="headline-wrap">
-        <h1 class="brand">VanzShop.com</h1>
+        <div class="badge">⚡ Layanan aktif 24/7</div>
+        <h1>VanzShop.com</h1>
         <p class="tagline">✨ Solusi Produk Digital Terbaik ✨</p>
       </div>
 
-      <!-- Tombol Order + submenu 3 opsi -->
-      <div class="link-group" id="order-group">
-        <button class="link-btn link-btn-primary has-caret" type="button">
-          <span class="btn-left">
+      <!-- ORDER GROUP (3 OPSI) -->
+      <div class="link-group">
+        <button class="link-btn link-btn-primary" type="button" id="orderToggle">
+          <span class="btn-content">
             <span class="btn-icon">🛒</span>
-            <span class="btn-text">Order Sekarang (24/7)</span>
-          </span>
-          <span class="btn-right">
-            <span class="btn-pill">3 Opsi</span>
-            <span class="btn-arrow" id="order-caret">▾</span>
+            <span class="btn-text">
+              Order Sekarang (24/7)
+              <span class="btn-pill">3 Opsi</span>
+            </span>
           </span>
         </button>
 
-        <div class="link-submenu" id="order-submenu">
+        <div class="link-submenu" id="orderSubmenu">
           <a class="sub-link" href="https://web.xoftware.id/vanzstoreid" target="_blank" rel="noopener">
             <span>🌐 Web Utama VanzShop</span>
-            <span class="sub-arrow">↗</span>
           </a>
           <a class="sub-link" href="order-garansi.html">
             <span>🛡️ Web Garansi & Auto Order</span>
-            <span class="sub-arrow">→</span>
           </a>
           <a class="sub-link" href="https://t.me/VanzShopBot" target="_blank" rel="noopener">
-            <span>🤖 Auto Order Telegram @VanzShopBot</span>
-            <span class="sub-arrow">↗</span>
+            <span>🤖 Auto Order Telegram</span>
           </a>
         </div>
       </div>
 
-      <!-- Tombol lain -->
-      <a class="link-btn" href="whatsapp.html">
-        <span class="btn-left">
-          <span class="btn-icon">💬</span>
-          <span class="btn-text">WhatsApp Admin</span>
-        </span>
-        <span class="btn-right">
-          <span class="btn-arrow">→</span>
-        </span>
-      </a>
-
-      <a class="link-btn" href="akses-email.html">
-        <span class="btn-left">
-          <span class="btn-icon">📩</span>
+      <!-- AKSES EMAIL -->
+      <a class="link-btn" href="https://vanzmail.web.id" target="_blank" rel="noopener">
+        <span class="btn-content">
+          <span class="btn-icon">📧</span>
           <span class="btn-text">Akses Email</span>
         </span>
-        <span class="btn-right">
-          <span class="btn-arrow">→</span>
-        </span>
       </a>
 
-      <a class="link-btn" href="ketentuan-garansi.html">
-        <span class="btn-left">
+      <!-- KETENTUAN GARANSI -->
+      <a class="link-btn" href="https://ketentuan-garansi.vanzshop.com" target="_blank" rel="noopener">
+        <span class="btn-content">
           <span class="btn-icon">🛡️</span>
           <span class="btn-text">Ketentuan Garansi</span>
         </span>
-        <span class="btn-right">
-          <span class="btn-arrow">→</span>
-        </span>
       </a>
 
-      <a class="link-btn" href="faq.html">
-        <span class="btn-left">
+      <!-- FAQ -->
+      <a class="link-btn" href="https://faq-website.vanzshop.com/" target="_blank" rel="noopener">
+        <span class="btn-content">
           <span class="btn-icon">❓</span>
           <span class="btn-text">FAQ</span>
         </span>
-        <span class="btn-right">
-          <span class="btn-arrow">→</span>
+      </a>
+
+      <!-- ADMIN & INFO (sementara pakai #, nanti bisa ganti link sendiri) -->
+      <a class="link-btn" href="#" title="Nanti bisa diisi link info/admin khusus">
+        <span class="btn-content">
+          <span class="btn-icon">📞</span>
+          <span class="btn-text">Admin & Info</span>
         </span>
       </a>
 
-      <a class="link-btn" href="hubungi-admin.html">
-        <span class="btn-left">
-          <span class="btn-icon">📞</span>
-          <span class="btn-text">Hubungi Admin</span>
-        </span>
-        <span class="btn-right">
-          <span class="btn-arrow">→</span>
-        </span>
-      </a>
+      <div class="footer-note">
+        © 2025 VanzShop.com · Aman · Cepat · Bergaransi
+      </div>
     </section>
   </main>
 
   <script>
-    const orderGroup = document.getElementById('order-group');
-    const orderSubmenu = document.getElementById('order-submenu');
-    const orderCaret = document.getElementById('order-caret');
+    const orderToggle = document.getElementById('orderToggle');
+    const orderSubmenu = document.getElementById('orderSubmenu');
 
-    if (orderGroup && orderSubmenu && orderCaret) {
-      const mainButton = orderGroup.querySelector('button');
-      mainButton.addEventListener('click', () => {
-        const isOpen = orderSubmenu.classList.toggle('open');
-        orderCaret.textContent = isOpen ? '▴' : '▾';
-      });
-    }
+    orderToggle.addEventListener('click', () => {
+      orderSubmenu.classList.toggle('open');
+    });
+
+    // optional: klik di luar untuk nutup submenu
+    document.addEventListener('click', (e) => {
+      if (!orderToggle.contains(e.target) && !orderSubmenu.contains(e.target)) {
+        orderSubmenu.classList.remove('open');
+      }
+    });
   </script>
 </body>
 </html>
