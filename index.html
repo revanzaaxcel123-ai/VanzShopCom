@@ -6,19 +6,257 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="VanzShop.com - Solusi produk digital terbaik: ChatGPT, Canva, CapCut, Netflix, Spotify, & lain-lain. Fast respon, aman, bergaransi.">
   <link rel="icon" href="logo.png">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#050509;
+      --card:#111118;
+      --accent:#f7d46a;
+      --accent-strong:#ffdf7a;
+      --accent-soft:rgba(247,212,106,0.22);
+      --text:#f5f5f5;
+      --text-muted:#b3b3c2;
+      --border-soft:rgba(255,255,255,0.06);
+      --radius-card:32px;
+      --radius-btn:18px;
+      --shadow-soft:0 28px 80px rgba(0,0,0,0.9);
+    }
+
+    *,*::before,*::after{box-sizing:border-box;}
+    html,body{margin:0;padding:0;}
+
+    body{
+      min-height:100vh;
+      font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:#050509;
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow-x:hidden;
+    }
+
+    /* ===== GLOBAL BG + EFFECT ===== */
+    .page-bg{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(40,40,90,0.85), transparent 60%),
+        radial-gradient(circle at 50% 120%, rgba(8,8,18,0.9), #050509 70%);
+    }
+
+    .page-bg::after{
+      content:"";
+      position:absolute;
+      right:-140px;
+      top:-20px;
+      width:420px;
+      height:420px;
+      background:radial-gradient(circle, rgba(247,212,106,0.42) 0%, transparent 60%);
+      filter:blur(6px);
+      opacity:.9;
+      mix-blend-mode:screen;
+    }
+
+    .orb{
+      position:absolute;
+      border-radius:999px;
+      background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.06), transparent 65%);
+      opacity:.55;
+      animation:floatOrb 36s ease-in-out infinite alternate;
+    }
+    .orb-1{width:160px;height:160px;left:8%;top:55%;animation-delay:-6s;}
+    .orb-2{width:240px;height:240px;right:8%;bottom:-40px;animation-delay:-14s;}
+    .orb-3{width:130px;height:130px;right:22%;top:20%;animation-delay:-22s;}
+
+    @keyframes floatOrb{
+      0%{transform:translate3d(0,0,0);opacity:.45;}
+      50%{transform:translate3d(18px,-24px,0);opacity:.8;}
+      100%{transform:translate3d(-12px,-6px,0);opacity:.5;}
+    }
+
+    /* ===== LAYOUT CARD ===== */
+    .shell{
+      width:100%;
+      max-width:480px;
+      padding:32px 18px;
+      position:relative;
+      z-index:1;
+    }
+
+    .card{
+      background:radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 55%),var(--card);
+      border-radius:var(--radius-card);
+      padding:30px 24px 26px;
+      border:1px solid var(--border-soft);
+      box-shadow:var(--shadow-soft);
+    }
+
+    /* ===== LOGO ===== */
+    .logo-wrap{
+      display:flex;
+      justify-content:center;
+      margin-bottom:14px;
+    }
+
+    .logo-circle{
+      width:118px;
+      height:118px;
+      border-radius:999px;
+      overflow:hidden;
+      background:radial-gradient(circle at 30% 20%, #fff7c8 0%, #ffe083 35%, #d4a937 70%, #7f6518 100%);
+      border:2px solid rgba(255,220,140,0.65);
+      box-shadow:
+        0 14px 36px rgba(0,0,0,0.9),
+        inset 0 7px 12px rgba(255,255,255,0.23),
+        inset 0 -7px 12px rgba(0,0,0,0.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logo-circle img{
+      width:94%;
+      height:94%;
+      object-fit:contain;
+      border-radius:50%;
+    }
+
+    /* ===== TITLE ===== */
+    .headline-wrap{
+      text-align:center;
+      margin-bottom:20px;
+    }
+    .brand{
+      margin:0 0 4px;
+      font-size:1.5rem;
+      color:var(--accent-strong);
+    }
+    .tagline{
+      margin:0;
+      font-size:.9rem;
+      color:var(--text-muted);
+    }
+
+    /* ===== LINK BUTTONS ===== */
+    .link-btn{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 16px;
+      margin-top:10px;
+      border-radius:var(--radius-btn);
+      background:#101018;
+      border:1px solid var(--border-soft);
+      color:#fff;
+      text-decoration:none;
+      cursor:pointer;
+      transition:
+        transform .1s ease-out,
+        box-shadow .12s ease-out,
+        border-color .12s ease-out,
+        background .12s ease-out;
+    }
+
+    .link-btn-primary{
+      background:linear-gradient(135deg,#2b2412,#141419);
+      border-color:rgba(247,212,106,0.65);
+      box-shadow:0 12px 30px rgba(0,0,0,0.9);
+    }
+
+    .link-btn:hover{
+      transform:translateY(-1px);
+      border-color:rgba(247,212,106,0.65);
+      box-shadow:0 16px 38px rgba(0,0,0,0.95);
+      background:linear-gradient(135deg,#181821,#1d1d25);
+    }
+
+    .link-btn-primary:hover{
+      background:linear-gradient(135deg,#3c3217,#171722);
+    }
+
+    .btn-left{display:flex;align-items:center;gap:10px;}
+    .btn-right{display:flex;align-items:center;gap:8px;}
+    .btn-icon{
+      width:28px;height:28px;
+      display:flex;align-items:center;justify-content:center;
+      border-radius:999px;
+      background:rgba(0,0,0,0.55);
+      font-size:1.12rem;
+    }
+    .btn-text{font-size:.95rem;font-weight:500;}
+    .btn-arrow{font-size:1.05rem;opacity:.9;}
+    .btn-pill{
+      font-size:.75rem;
+      padding:2px 8px;
+      border-radius:999px;
+      background:rgba(0,0,0,0.55);
+      border:1px solid rgba(247,212,106,0.6);
+      color:var(--accent-strong);
+    }
+
+    /* ===== ORDER GROUP + SUBMENU ===== */
+    .link-group{margin-bottom:4px;}
+
+    .link-submenu{
+      display:none;
+      flex-direction:column;
+      gap:6px;
+      margin-top:8px;
+    }
+    .link-submenu.open{display:flex;}
+
+    .sub-link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:9px 13px;
+      border-radius:14px;
+      background:rgba(9,9,16,0.94);
+      border:1px solid rgba(255,255,255,0.02);
+      text-decoration:none;
+      color:var(--text-muted);
+      font-size:.85rem;
+      transition:
+        background .12s ease-out,
+        border-color .12s ease-out,
+        transform .1s ease-out;
+    }
+
+    .sub-link:hover{
+      background:linear-gradient(135deg,#171729,#11111a);
+      border-color:rgba(247,212,106,0.4);
+      color:#fefefe;
+      transform:translateY(-1px);
+    }
+
+    .sub-arrow{opacity:.8;}
+
+    @media (max-width:480px){
+      .card{padding:26px 18px 22px;}
+      .brand{font-size:1.35rem;}
+      .logo-circle{width:108px;height:108px;}
+    }
+  </style>
 </head>
 <body>
-  <div class="page-bg"></div>
+  <div class="page-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
   <main class="shell">
     <section class="card main-card">
       <!-- Logo -->
       <div class="logo-wrap">
         <div class="logo-circle">
+          <!-- pastikan file ini bernama logo.png -->
           <img src="logo.png" alt="Logo VanzShop.com">
         </div>
       </div>
@@ -29,7 +267,7 @@
         <p class="tagline">✨ Solusi Produk Digital Terbaik ✨</p>
       </div>
 
-      <!-- Tombol Order (punya submenu 3 link) -->
+      <!-- Tombol Order + submenu 3 opsi -->
       <div class="link-group" id="order-group">
         <button class="link-btn link-btn-primary has-caret" type="button">
           <span class="btn-left">
@@ -79,7 +317,6 @@
         </span>
       </a>
 
-      <!-- Tambahan: Ketentuan Garansi -->
       <a class="link-btn" href="ketentuan-garansi.html">
         <span class="btn-left">
           <span class="btn-icon">🛡️</span>
@@ -90,7 +327,6 @@
         </span>
       </a>
 
-      <!-- Tambahan: FAQ -->
       <a class="link-btn" href="faq.html">
         <span class="btn-left">
           <span class="btn-icon">❓</span>
@@ -101,7 +337,6 @@
         </span>
       </a>
 
-      <!-- Tambahan: Hubungi Admin -->
       <a class="link-btn" href="hubungi-admin.html">
         <span class="btn-left">
           <span class="btn-icon">📞</span>
@@ -114,7 +349,6 @@
     </section>
   </main>
 
-  <!-- Script kecil buat toggle submenu "Order Sekarang" -->
   <script>
     const orderGroup = document.getElementById('order-group');
     const orderSubmenu = document.getElementById('order-submenu');
