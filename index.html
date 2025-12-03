@@ -1,70 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VanzShop.id</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <title>VanzShop.com — Solusi Produk Digital Terbaik</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VanzShop.com - Solusi produk digital terbaik: ChatGPT, Canva, CapCut, Netflix, Spotify, & lain-lain. Fast respon, aman, bergaransi.">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div class="container">
-        
-        <!-- LOGO -->
-        <img src="assets/logo.png" class="logo" alt="logo">
+  <div class="page-bg"></div>
 
-        <h1 class="title">VanzShop.id</h1>
-        <p class="subtitle">✨ Solusi Produk Digital Terbaik ✨</p>
-
-        <!-- ORDER -->
-        <div class="card dropdown">
-            <div class="card-main" onclick="toggleDropdown()">
-                <span class="icon">🛒</span>
-                <span class="text">Order Sekarang (24/7)</span>
-                <span class="arrow">▼</span>
-            </div>
-
-            <div class="dropdown-content" id="dropdownMenu">
-                <a href="YOUR_WEBSTORE_LINK" class="sub-btn">Beli via Webstore</a>
-                <a href="https://t.me/VanzShopBot" class="sub-btn">Bot Telegram Auto Order</a>
-            </div>
+  <main class="shell">
+    <section class="card main-card">
+      <!-- Logo -->
+      <div class="logo-wrap">
+        <!-- ganti src ke logo lo -->
+        <div class="logo-circle">
+          <img src="logo.png" alt="Logo VanzShop.com">
         </div>
+      </div>
 
-        <!-- WA -->
-        <a href="https://wa.me/62895415204928" class="card">
-            <span class="icon">💬</span>
-            <span class="text">WhatsApp Admin</span>
-            <span class="arrow">→</span>
-        </a>
+      <!-- Nama & tagline -->
+      <div class="headline-wrap">
+        <h1 class="brand">VanzShop.com</h1>
+        <p class="tagline">✨ Solusi Produk Digital Terbaik ✨</p>
+      </div>
 
-        <!-- EMAIL -->
-        <a href="https://vanzmail.web.id" class="card">
-            <span class="icon">📧</span>
-            <span class="text">Akses Email</span>
-            <span class="arrow">→</span>
-        </a>
+      <!-- Tombol Order (punya submenu 3 link) -->
+      <div class="link-group" id="order-group">
+        <button class="link-btn link-btn-primary has-caret" type="button">
+          <span class="btn-left">
+            <span class="btn-icon">🛒</span>
+            <span class="btn-text">Order Sekarang (24/7)</span>
+          </span>
+          <span class="btn-right">
+            <span class="btn-pill">3 Opsi</span>
+            <span class="btn-arrow" id="order-caret">▾</span>
+          </span>
+        </button>
 
-        <!-- GARANSI -->
-        <a class="card">
-            <span class="icon">🛡️</span>
-            <span class="text">Ketentuan Garansi</span>
-            <span class="arrow">→</span>
-        </a>
+        <div class="link-submenu" id="order-submenu">
+          <a class="sub-link" href="https://web.xoftware.id/vanzstoreid" target="_blank" rel="noopener">
+            <span>🌐 Web Utama VanzShop</span>
+            <span class="sub-arrow">↗</span>
+          </a>
+          <a class="sub-link" href="order-garansi.html">
+            <span>🛡️ Web Garansi & Auto Order</span>
+            <span class="sub-arrow">→</span>
+          </a>
+          <a class="sub-link" href="https://t.me/VanzShopBot" target="_blank" rel="noopener">
+            <span>🤖 Auto Order Telegram @VanzShopBot</span>
+            <span class="sub-arrow">↗</span>
+          </a>
+        </div>
+      </div>
 
-        <!-- FAQ -->
-        <a href="https://vanzshop.com" class="card">
-            <span class="icon">❓</span>
-            <span class="text">FAQ</span>
-            <span class="arrow">→</span>
-        </a>
+      <!-- Tombol lain -->
+      <a class="link-btn" href="whatsapp.html">
+        <span class="btn-left">
+          <span class="btn-icon">💬</span>
+          <span class="btn-text">WhatsApp Admin</span>
+        </span>
+        <span class="btn-right">
+          <span class="btn-arrow">→</span>
+        </span>
+      </a>
 
-    </div>
-
-<script>
-function toggleDropdown() {
-    document.getElementById("dropdownMenu").classList.toggle("show");
-}
-</script>
-
-</body>
-</html>
+      <a class="link-btn" href="akses-email.html">
+        <span class="btn-left">
+          <span class="btn-icon">📩</span>
+          <span class="btn-text">Akses Email</span>
+        </span>
+        <span class="btn-right">
+          <span c
