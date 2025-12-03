@@ -2,19 +2,23 @@
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <title>VanzShop.com — Solusi Produk Digital Terbaik</title>
+  <title>VanzShop.com — Hub & Katalog Produk Digital</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="VanzShop.com - Solusi produk digital terbaik: ChatGPT, Canva, CapCut, Netflix, Spotify, & lain-lain. Fast respon, aman, bergaransi.">
+  <meta name="description" content="VanzShop.com — pusat semua layanan: order otomatis 24/7, akses email, ketentuan garansi, FAQ, dan katalog produk digital premium.">
   <link rel="icon" href="logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+    /* ========== THEME ========== */
+    :root{
       --bg:#050509;
+      --bg-soft:#090914;
       --card:#111118;
+      --card-soft:#161622;
       --accent:#f7d46a;
       --accent-strong:#ffdf7a;
-      --accent-soft:rgba(247,212,106,0.22);
+      --accent-soft:rgba(247,212,106,0.18);
+      --accent-hard:#f8b93a;
       --text:#f5f5f5;
       --text-muted:#b3b3c2;
       --border-soft:rgba(255,255,255,0.06);
@@ -31,12 +35,12 @@
       background:var(--bg);
       color:var(--text);
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       justify-content:center;
       overflow-x:hidden;
     }
 
-    /* BG */
+    /* ========== GLOBAL BG ========== */
     .page-bg{
       position:fixed;
       inset:0;
@@ -75,23 +79,34 @@
       100%{transform:translate3d(-12px,-6px,0);opacity:.5;}
     }
 
-    /* LAYOUT */
-    .shell{
+    /* ========== GLOBAL LAYOUT ========== */
+    main{
       width:100%;
-      max-width:480px;
-      padding:32px 18px;
+      max-width:1100px;
+      padding:40px 18px 60px;
       position:relative;
       z-index:1;
     }
-    .card{
+
+    /* SECTION SPACING */
+    .section{
+      margin-bottom:40px;
+    }
+    .section + .section{
+      margin-top:36px;
+    }
+
+    /* ========== HUB CARD (ATAS) ========== */
+    .hub-card{
+      margin:0 auto;
+      max-width:480px;
       background:radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 55%),var(--card);
       border-radius:var(--radius-card);
       box-shadow:var(--shadow-soft);
-      padding:30px 24px 28px;
+      padding:30px 24px 26px;
       border:1px solid rgba(255,255,255,0.04);
     }
 
-    /* LOGO */
     .logo-wrap{
       display:flex;
       justify-content:center;
@@ -123,6 +138,16 @@
       text-align:center;
       margin-bottom:22px;
     }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--accent-soft);
+      color:var(--accent-strong);
+      font-size:.78rem;
+    }
     .headline-wrap h1{
       margin:4px 0 4px;
       font-size:1.6rem;
@@ -134,17 +159,6 @@
       color:var(--text-muted);
     }
 
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:4px 10px;
-      border-radius:999px;
-      background:var(--accent-soft);
-      color:var(--accent-strong);
-      font-size:.78rem;
-    }
-
     /* BUTTON BASE */
     .link-btn{
       width:100%;
@@ -152,7 +166,7 @@
       outline:none;
       text-decoration:none;
       display:flex;
-      justify-content:flex-start;   /* rata kiri */
+      justify-content:flex-start;
       align-items:center;
       padding:12px 16px;
       border-radius:var(--radius-btn);
@@ -219,8 +233,7 @@
       color:var(--accent-strong);
     }
 
-    /* FOOTER */
-    .footer-note{
+    .hub-footer{
       margin-top:20px;
       text-align:center;
       font-size:.8rem;
@@ -228,10 +241,227 @@
       opacity:.9;
     }
 
-    @media(max-width:480px){
-      .headline-wrap h1{font-size:1.4rem;}
-      .btn-text{font-size:.9rem;}
+    /* CTA SCROLL KE KATALOG */
+    .scroll-cta-wrap{
+      margin:18px auto 10px;
+      max-width:480px;
+      text-align:center;
     }
+    .scroll-cta-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.16);
+      background:rgba(10,10,20,0.9);
+      font-size:.8rem;
+      color:var(--text-muted);
+      text-decoration:none;
+      cursor:pointer;
+    }
+    .scroll-cta-btn span.icon{
+      font-size:.9rem;
+    }
+
+    /* ========== KATALOG SECTION ========== */
+    .catalog-section{
+      margin:0 auto;
+      max-width:1100px;
+    }
+    .catalog-inner{
+      border-radius:26px;
+      background:radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 55%),var(--card-soft);
+      border:1px solid rgba(255,255,255,0.05);
+      padding:22px 20px 24px;
+      box-shadow:0 24px 70px rgba(0,0,0,0.9);
+    }
+    .catalog-header{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+    .catalog-title h2{
+      margin:0 0 4px;
+      font-size:1.35rem;
+    }
+    .catalog-title p{
+      margin:0;
+      font-size:.88rem;
+      color:var(--text-muted);
+    }
+    .catalog-badge{
+      font-size:.8rem;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(0,0,0,0.55);
+      border:1px solid rgba(247,212,106,0.4);
+      color:var(--accent-strong);
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      white-space:nowrap;
+    }
+
+    /* FILTER PILLS */
+    .filter-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:16px;
+    }
+    .filter-pill{
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.09);
+      background:rgba(6,6,14,0.85);
+      font-size:.8rem;
+      color:var(--text-muted);
+      cursor:pointer;
+      user-select:none;
+    }
+    .filter-pill.active{
+      border-color:rgba(247,212,106,0.9);
+      background:linear-gradient(135deg,#2a2414,#181522);
+      color:var(--accent-strong);
+      box-shadow:0 0 12px rgba(247,212,106,0.4);
+    }
+
+    /* GRID PRODUK */
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+    }
+
+    @media(max-width:900px){
+      .product-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+    @media(max-width:640px){
+      .product-grid{
+        grid-template-columns:minmax(0,1fr);
+      }
+    }
+
+    .product-card{
+      position:relative;
+      border-radius:18px;
+      padding:13px 12px 12px;
+      background:radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 60%),#11111a;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 18px 40px rgba(0,0,0,0.85);
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      overflow:hidden;
+    }
+    .product-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:linear-gradient(135deg,rgba(247,212,106,0.4),transparent,rgba(150,120,255,0.4));
+      opacity:0;
+      transition:opacity .15s ease-out;
+      pointer-events:none;
+    }
+    .product-card:hover::before{
+      opacity:.7;
+    }
+    .product-card:hover{
+      transform:translateY(-2px);
+    }
+
+    .product-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:6px;
+    }
+    .product-name{
+      font-size:.9rem;
+      font-weight:600;
+    }
+    .product-tagline{
+      font-size:.78rem;
+      color:var(--text-muted);
+    }
+    .product-pill{
+      font-size:.7rem;
+      padding:2px 7px;
+      border-radius:999px;
+      border:1px solid rgba(247,212,106,0.6);
+      color:var(--accent-strong);
+      background:rgba(0,0,0,0.5);
+      white-space:nowrap;
+    }
+    .product-price{
+      font-size:.9rem;
+      font-weight:600;
+      color:var(--accent-strong);
+    }
+    .product-meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      margin-top:4px;
+    }
+    .product-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:4px;
+    }
+    .product-tag{
+      font-size:.7rem;
+      padding:2px 6px;
+      border-radius:999px;
+      background:rgba(18,18,30,0.95);
+      color:var(--text-muted);
+    }
+    .product-cta{
+      margin-top:7px;
+      display:flex;
+      gap:6px;
+    }
+    .product-btn{
+      flex:1;
+      padding:6px 8px;
+      border-radius:999px;
+      border:none;
+      font-size:.75rem;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:4px;
+      text-decoration:none;
+    }
+    .product-btn.bot{
+      background:linear-gradient(135deg,#f7d46a,#f8b93a);
+      color:#111;
+      font-weight:600;
+    }
+    .product-btn.web{
+      background:rgba(10,10,20,0.95);
+      color:var(--text);
+      border:1px solid rgba(255,255,255,0.12);
+    }
+
+    .catalog-footnote{
+      margin-top:16px;
+      font-size:.78rem;
+      color:var(--text-muted);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
   </style>
 </head>
 <body>
@@ -241,69 +471,268 @@
     <div class="orb orb-3"></div>
   </div>
 
-  <main class="shell">
-    <section class="card">
-      <!-- Logo -->
-      <div class="logo-wrap">
-        <div class="logo-circle">
-          <img src="logo.png" alt="Logo VanzShop.com">
+  <main>
+    <!-- HUB CARD / LINKTREE -->
+    <section class="section">
+      <div class="hub-card">
+        <!-- Logo -->
+        <div class="logo-wrap">
+          <div class="logo-circle">
+            <img src="logo.png" alt="Logo VanzShop.com">
+          </div>
+        </div>
+
+        <!-- Brand & tagline -->
+        <div class="headline-wrap">
+          <div class="badge">⚡ Layanan aktif 24/7</div>
+          <h1>VanzShop.com</h1>
+          <p class="tagline">✨ Solusi Produk Digital Terbaik ✨</p>
+        </div>
+
+        <!-- Order langsung ke direct-order -->
+        <a class="link-btn link-btn-primary" href="https://direct-order.vanzshop.com" target="_blank" rel="noopener">
+          <span class="btn-content">
+            <span class="btn-icon">🛒</span>
+            <span class="btn-text">
+              Order Sekarang (24/7)
+              <span class="btn-pill">3 Opsi</span>
+            </span>
+          </span>
+        </a>
+
+        <!-- Akses Email -->
+        <a class="link-btn" href="https://vanzmail.web.id" target="_blank" rel="noopener">
+          <span class="btn-content">
+            <span class="btn-icon">📧</span>
+            <span class="btn-text">Akses Email</span>
+          </span>
+        </a>
+
+        <!-- Ketentuan Garansi -->
+        <a class="link-btn" href="https://ketentuan-garansi.vanzshop.com" target="_blank" rel="noopener">
+          <span class="btn-content">
+            <span class="btn-icon">🛡️</span>
+            <span class="btn-text">Ketentuan Garansi</span>
+          </span>
+        </a>
+
+        <!-- FAQ -->
+        <a class="link-btn" href="https://faq-website.vanzshop.com/" target="_blank" rel="noopener">
+          <span class="btn-content">
+            <span class="btn-icon">❓</span>
+            <span class="btn-text">FAQ</span>
+          </span>
+        </a>
+
+        <!-- Admin & Info (placeholder link, nanti bisa lu ganti) -->
+        <a class="link-btn" href="#" title="Hubungi admin / info lengkap">
+          <span class="btn-content">
+            <span class="btn-icon">📞</span>
+            <span class="btn-text">Admin & Info</span>
+          </span>
+        </a>
+
+        <div class="hub-footer">
+          © 2025 VanzShop.com · 🔒 Aman · ⚡ Cepat · 🛡️ Bergaransi
         </div>
       </div>
+    </section>
 
-      <!-- Brand + tagline -->
-      <div class="headline-wrap">
-        <div class="badge">⚡ Layanan aktif 24/7</div>
-        <h1>VanzShop.com</h1>
-        <p class="tagline">✨ Solusi Produk Digital Terbaik ✨</p>
-      </div>
-
-      <!-- ORDER SEKARANG (langsung ke direct-order) -->
-      <a class="link-btn link-btn-primary" href="https://direct-order.vanzshop.com" target="_blank" rel="noopener">
-        <span class="btn-content">
-          <span class="btn-icon">🛒</span>
-          <span class="btn-text">
-            Order Sekarang (24/7)
-            <span class="btn-pill">3 Opsi</span>
-          </span>
-        </span>
+    <!-- Tombol scroll ke katalog -->
+    <div class="scroll-cta-wrap">
+      <a href="#katalog" class="scroll-cta-btn">
+        <span class="icon">👇</span>
+        <span>Lihat katalog lengkap & paket promo</span>
       </a>
+    </div>
 
-      <!-- AKSES EMAIL -->
-      <a class="link-btn" href="https://vanzmail.web.id" target="_blank" rel="noopener">
-        <span class="btn-content">
-          <span class="btn-icon">📧</span>
-          <span class="btn-text">Akses Email</span>
-        </span>
-      </a>
+    <!-- KATALOG “GOLD MODE” -->
+    <section id="katalog" class="section catalog-section">
+      <div class="catalog-inner">
+        <div class="catalog-header">
+          <div class="catalog-title">
+            <h2>🔥 Katalog Produk Premium</h2>
+            <p>Pilih paket yang cocok. Semua bisa order otomatis via bot ataupun webstore.</p>
+          </div>
+          <div class="catalog-badge">
+            ✨ Auto Order · PG Terintegrasi · Ready Reseller
+          </div>
+        </div>
 
-      <!-- KETENTUAN GARANSI -->
-      <a class="link-btn" href="https://ketentuan-garansi.vanzshop.com" target="_blank" rel="noopener">
-        <span class="btn-content">
-          <span class="btn-icon">🛡️</span>
-          <span class="btn-text">Ketentuan Garansi</span>
-        </span>
-      </a>
+        <!-- Filter kategori -->
+        <div class="filter-row">
+          <button class="filter-pill active" data-cat="all">Semua</button>
+          <button class="filter-pill" data-cat="ai">AI & Productivity</button>
+          <button class="filter-pill" data-cat="editing">Editing & Desain</button>
+          <button class="filter-pill" data-cat="streaming">Streaming</button>
+          <button class="filter-pill" data-cat="other">Lainnya</button>
+        </div>
 
-      <!-- FAQ -->
-      <a class="link-btn" href="https://faq-website.vanzshop.com/" target="_blank" rel="noopener">
-        <span class="btn-content">
-          <span class="btn-icon">❓</span>
-          <span class="btn-text">FAQ</span>
-        </span>
-      </a>
+        <!-- GRID PRODUK -->
+        <div class="product-grid" id="productGrid">
+          <!-- diisi via JS -->
+        </div>
 
-      <!-- ADMIN & INFO (masih placeholder, bisa diganti nanti) -->
-      <a class="link-btn" href="#" title="Link info/admin khusus">
-        <span class="btn-content">
-          <span class="btn-icon">📞</span>
-          <span class="btn-text">Admin & Info</span>
-        </span>
-      </a>
-
-      <div class="footer-note">
-        © 2025 VanzShop.com · 🔒 Aman · ⚡ Cepat · 🛡️ Bergaransi
+        <div class="catalog-footnote">
+          <span>💡 Semua harga bisa disesuaikan & diubah langsung dari script (JS) tanpa sentuh desain.</span>
+          <span>🤝 Butuh paket reseller besar? Chat via tombol <strong>Admin & Info</strong> di atas.</span>
+        </div>
       </div>
     </section>
   </main>
+
+  <script>
+    // ====== DATA PRODUK (BISA LO EDIT SESUKA HATI) ======
+    const PRODUCTS = [
+      {
+        id:"canva_life",
+        name:"Canva Lifetime",
+        cat:"editing",
+        price:"5K",
+        tagline:"Full access design tanpa ribet langganan.",
+        pill:"Best Seller",
+        tags:["Full Premium","Bisa di banyak device","Cocok untuk jual jasa desain"],
+      },
+      {
+        id:"capcut_1b",
+        name:"CapCut Pro 1 Bulan",
+        cat:"editing",
+        price:"6K",
+        tagline:"Semua efek & filter PRO kebuka.",
+        pill:"Video Editing",
+        tags:["Full tools","Tanpa watermark","Support HP & PC"],
+      },
+      {
+        id:"capcut_1t",
+        name:"CapCut Pro 1 Tahun",
+        cat:"editing",
+        price:"12K",
+        tagline:"Paket hemat setahun, gas jual jasa editing.",
+        pill:"Hemat Tahunan",
+        tags:["Full efek","Auto renew by admin","Support semua device"],
+      },
+      {
+        id:"alight_1t",
+        name:"Alight Motion 1 Tahun",
+        cat:"editing",
+        price:"10K",
+        tagline:"Motion graphic & preset jadi makin brutal.",
+        pill:"Preset Friendly",
+        tags:["Tanpa watermark","Full fitur","Cocok untuk konten IG/TikTok"],
+      },
+      {
+        id:"chatgpt_1b",
+        name:"ChatGPT Premium 1 Bulan",
+        cat:"ai",
+        price:"20K",
+        tagline:"GPT-4 / GPT-4o buat bisnis, belajar & riset.",
+        pill:"AI Power",
+        tags:["Fast respon","Support coding & data","Cocok buat skripsi & copywriting"],
+      },
+      {
+        id:"gemini_1b",
+        name:"Gemini Advanced 1 Bulan",
+        cat:"ai",
+        price:"10K",
+        tagline:"AI Google untuk dokumen & riset berat.",
+        pill:"Google Ecosystem",
+        tags:["Integrasi Google Drive","Multi bahasa","Cocok buat pelajar"],
+      },
+      {
+        id:"netflix",
+        name:"Netflix Premium",
+        cat:"streaming",
+        price:"15K",
+        tagline:"Akun sharing aman nonton rame-rame.",
+        pill:"4K Ready",
+        tags:["Garansi profil aktif","Support TV/HP","Banyak film & series"],
+      },
+      {
+        id:"spotify",
+        name:"Spotify Premium",
+        cat:"streaming",
+        price:"5K",
+        tagline:"Skip bebas, download lagu offline.",
+        pill:"Music Lovers",
+        tags:["Tanpa iklan","Playlist bebas","Support semua device"],
+      },
+      {
+        id:"yt_premium",
+        name:"YouTube Premium",
+        cat:"streaming",
+        price:"10K",
+        tagline:"Nonton tanpa iklan + background play.",
+        pill:"Creator Friendly",
+        tags:["No ads","Picture-in-picture","Cocok buat belajar & musik"],
+      },
+      {
+        id:"scribd",
+        name:"Scribd 1 Bulan",
+        cat:"other",
+        price:"8K",
+        tagline:"Ribuan ebook & dokumen premium.",
+        pill:"Belajar & Riset",
+        tags:["Download dokumen","Akses buku rare","Support HP & PC"],
+      },
+      {
+        id:"zoom_14",
+        name:"Zoom Pro 14 Hari",
+        cat:"other",
+        price:"7K",
+        tagline:"Meeting tanpa batas 40 menit.",
+        pill:"Meeting Online",
+        tags:["Full features","Cocok webinar","Bisa record"],
+      },
+    ];
+
+    const productGrid = document.getElementById("productGrid");
+    const filterPills = document.querySelectorAll(".filter-pill");
+
+    function renderProducts(category="all"){
+      productGrid.innerHTML = "";
+      const list = PRODUCTS.filter(p => category==="all" ? true : p.cat===category);
+      list.forEach(p => {
+        const card = document.createElement("article");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div class="product-top">
+            <div>
+              <div class="product-name">${p.name}</div>
+              <div class="product-tagline">${p.tagline}</div>
+            </div>
+            <div>
+              <div class="product-pill">${p.pill}</div>
+              <div class="product-price">Mulai <strong>${p.price}</strong></div>
+            </div>
+          </div>
+          <div class="product-meta">
+            <div class="product-tags">
+              ${p.tags.map(t => `<span class="product-tag">${t}</span>`).join("")}
+            </div>
+          </div>
+          <div class="product-cta">
+            <a class="product-btn bot" href="https://t.me/VanzShopBot" target="_blank" rel="noopener">
+              🤖 Bot
+            </a>
+            <a class="product-btn web" href="https://direct-order.vanzshop.com" target="_blank" rel="noopener">
+              🌐 Webstore
+            </a>
+          </div>
+        `;
+        productGrid.appendChild(card);
+      });
+    }
+
+    renderProducts("all");
+
+    filterPills.forEach(pill => {
+      pill.addEventListener("click", () => {
+        filterPills.forEach(x => x.classList.remove("active"));
+        pill.classList.add("active");
+        const cat = pill.getAttribute("data-cat");
+        renderProducts(cat);
+      });
+    });
+  </script>
 </body>
 </html>
