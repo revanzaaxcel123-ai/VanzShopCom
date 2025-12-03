@@ -152,7 +152,7 @@
       outline:none;
       text-decoration:none;
       display:flex;
-      justify-content:center; /* center text */
+      justify-content:flex-start;   /* rata kiri */
       align-items:center;
       padding:12px 16px;
       border-radius:var(--radius-btn);
@@ -189,7 +189,6 @@
       display:inline-flex;
       align-items:center;
       gap:10px;
-      text-align:center;
     }
     .btn-icon{
       width:28px;
@@ -220,43 +219,13 @@
       color:var(--accent-strong);
     }
 
-    /* SUBMENU */
-    .link-group{margin-bottom:6px;}
-    .link-submenu{
-      margin-top:6px;
-      border-radius:20px;
-      background:rgba(9,9,15,0.92);
-      border:1px solid rgba(255,255,255,0.06);
-      padding:6px;
-      display:none;
-    }
-    .link-submenu.open{display:block;}
-    .sub-link{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:8px 10px;
-      border-radius:14px;
-      text-decoration:none;
-      color:var(--text);
-      font-size:.86rem;
-      transition:background .12s,border-color .12s,transform .08s;
-      border:1px solid transparent;
-    }
-    .sub-link span{display:inline-flex;align-items:center;gap:6px;}
-    .sub-link:hover{
-      background:rgba(255,255,255,0.03);
-      border-color:rgba(247,212,106,0.45);
-      transform:translateY(-1px);
-    }
-
     /* FOOTER */
     .footer-note{
       margin-top:20px;
       text-align:center;
       font-size:.8rem;
       color:var(--text-muted);
-      opacity:.85;
+      opacity:.9;
     }
 
     @media(max-width:480px){
@@ -288,30 +257,16 @@
         <p class="tagline">✨ Solusi Produk Digital Terbaik ✨</p>
       </div>
 
-      <!-- ORDER GROUP (3 OPSI) -->
-      <div class="link-group">
-        <button class="link-btn link-btn-primary" type="button" id="orderToggle">
-          <span class="btn-content">
-            <span class="btn-icon">🛒</span>
-            <span class="btn-text">
-              Order Sekarang (24/7)
-              <span class="btn-pill">3 Opsi</span>
-            </span>
+      <!-- ORDER SEKARANG (langsung ke direct-order) -->
+      <a class="link-btn link-btn-primary" href="https://direct-order.vanzshop.com" target="_blank" rel="noopener">
+        <span class="btn-content">
+          <span class="btn-icon">🛒</span>
+          <span class="btn-text">
+            Order Sekarang (24/7)
+            <span class="btn-pill">3 Opsi</span>
           </span>
-        </button>
-
-        <div class="link-submenu" id="orderSubmenu">
-          <a class="sub-link" href="https://web.xoftware.id/vanzstoreid" target="_blank" rel="noopener">
-            <span>🌐 Web Utama VanzShop</span>
-          </a>
-          <a class="sub-link" href="order-garansi.html">
-            <span>🛡️ Web Garansi & Auto Order</span>
-          </a>
-          <a class="sub-link" href="https://t.me/VanzShopBot" target="_blank" rel="noopener">
-            <span>🤖 Auto Order Telegram</span>
-          </a>
-        </div>
-      </div>
+        </span>
+      </a>
 
       <!-- AKSES EMAIL -->
       <a class="link-btn" href="https://vanzmail.web.id" target="_blank" rel="noopener">
@@ -337,8 +292,8 @@
         </span>
       </a>
 
-      <!-- ADMIN & INFO (sementara pakai #, nanti bisa ganti link sendiri) -->
-      <a class="link-btn" href="#" title="Nanti bisa diisi link info/admin khusus">
+      <!-- ADMIN & INFO (masih placeholder, bisa diganti nanti) -->
+      <a class="link-btn" href="#" title="Link info/admin khusus">
         <span class="btn-content">
           <span class="btn-icon">📞</span>
           <span class="btn-text">Admin & Info</span>
@@ -346,25 +301,9 @@
       </a>
 
       <div class="footer-note">
-        © 2025 VanzShop.com · Aman · Cepat · Bergaransi
+        © 2025 VanzShop.com · 🔒 Aman · ⚡ Cepat · 🛡️ Bergaransi
       </div>
     </section>
   </main>
-
-  <script>
-    const orderToggle = document.getElementById('orderToggle');
-    const orderSubmenu = document.getElementById('orderSubmenu');
-
-    orderToggle.addEventListener('click', () => {
-      orderSubmenu.classList.toggle('open');
-    });
-
-    // optional: klik di luar untuk nutup submenu
-    document.addEventListener('click', (e) => {
-      if (!orderToggle.contains(e.target) && !orderSubmenu.contains(e.target)) {
-        orderSubmenu.classList.remove('open');
-      }
-    });
-  </script>
 </body>
 </html>
