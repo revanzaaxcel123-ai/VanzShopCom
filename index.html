@@ -18,7 +18,6 @@
     <section class="card main-card">
       <!-- Logo -->
       <div class="logo-wrap">
-        <!-- ganti src ke logo lo -->
         <div class="logo-circle">
           <img src="logo.png" alt="Logo VanzShop.com">
         </div>
@@ -76,4 +75,58 @@
           <span class="btn-text">Akses Email</span>
         </span>
         <span class="btn-right">
-          <span c
+          <span class="btn-arrow">→</span>
+        </span>
+      </a>
+
+      <!-- Tambahan: Ketentuan Garansi -->
+      <a class="link-btn" href="ketentuan-garansi.html">
+        <span class="btn-left">
+          <span class="btn-icon">🛡️</span>
+          <span class="btn-text">Ketentuan Garansi</span>
+        </span>
+        <span class="btn-right">
+          <span class="btn-arrow">→</span>
+        </span>
+      </a>
+
+      <!-- Tambahan: FAQ -->
+      <a class="link-btn" href="faq.html">
+        <span class="btn-left">
+          <span class="btn-icon">❓</span>
+          <span class="btn-text">FAQ</span>
+        </span>
+        <span class="btn-right">
+          <span class="btn-arrow">→</span>
+        </span>
+      </a>
+
+      <!-- Tambahan: Hubungi Admin -->
+      <a class="link-btn" href="hubungi-admin.html">
+        <span class="btn-left">
+          <span class="btn-icon">📞</span>
+          <span class="btn-text">Hubungi Admin</span>
+        </span>
+        <span class="btn-right">
+          <span class="btn-arrow">→</span>
+        </span>
+      </a>
+    </section>
+  </main>
+
+  <!-- Script kecil buat toggle submenu "Order Sekarang" -->
+  <script>
+    const orderGroup = document.getElementById('order-group');
+    const orderSubmenu = document.getElementById('order-submenu');
+    const orderCaret = document.getElementById('order-caret');
+
+    if (orderGroup && orderSubmenu && orderCaret) {
+      const mainButton = orderGroup.querySelector('button');
+      mainButton.addEventListener('click', () => {
+        const isOpen = orderSubmenu.classList.toggle('open');
+        orderCaret.textContent = isOpen ? '▴' : '▾';
+      });
+    }
+  </script>
+</body>
+</html>
