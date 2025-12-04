@@ -43,36 +43,43 @@
       z-index:0;
       pointer-events:none;
       background:
-        radial-gradient(circle at 15% 0%, rgba(40,40,80,0.85), transparent 60%),
-        radial-gradient(circle at 50% 120%, rgba(8,8,18,0.9), #050509 70%);
+        radial-gradient(circle at 15% 0%, rgba(40,40,80,0.9), transparent 60%),
+        radial-gradient(circle at 50% 120%, rgba(8,8,18,0.95), #050509 70%);
     }
+
+    /* gelembung kanan: hitam + sedikit kuning */
     .page-bg::after{
       content:"";
       position:absolute;
-      right:-140px;
-      top:-20px;
-      width:420px;
-      height:420px;
-      background:radial-gradient(circle, rgba(247,212,106,0.42) 0%, transparent 60%);
-      filter:blur(6px);
-      opacity:.9;
+      right:5%;
+      top:18%;
+      width:360px;
+      height:360px;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(247,212,106,0.16) 0%, rgba(10,10,10,0.95) 50%, transparent 75%);
+      filter:blur(4px);
+      opacity:.85;
       mix-blend-mode:screen;
     }
+
+    /* ORBS bergerak */
     .orb{
       position:absolute;
       border-radius:999px;
-      background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.06), transparent 65%);
-      opacity:.55;
-      animation:floatOrb 36s ease-in-out infinite alternate;
+      background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.09), transparent 70%);
+      opacity:.7;
+      animation:floatOrb 24s ease-in-out infinite alternate;
     }
-    .orb-1{width:160px;height:160px;left:8%;top:55%;animation-delay:-6s;}
-    .orb-2{width:240px;height:240px;right:8%;bottom:-40px;animation-delay:-14s;}
-    .orb-3{width:130px;height:130px;right:22%;top:20%;animation-delay:-22s;}
+    .orb-1{width:180px;height:180px;left:8%;top:58%;animation-delay:-4s;}
+    .orb-2{width:230px;height:230px;right:10%;bottom:-20px;animation-delay:-10s;
+      background:radial-gradient(circle at 25% 20%, rgba(255,255,255,0.07), transparent 70%);
+    }
+    .orb-3{width:150px;height:150px;right:23%;top:24%;animation-delay:-18s;}
 
     @keyframes floatOrb{
-      0%{transform:translate3d(0,0,0);opacity:.45;}
-      50%{transform:translate3d(18px,-24px,0);opacity:.8;}
-      100%{transform:translate3d(-12px,-6px,0);opacity:.5;}
+      0%  {transform:translate3d(0,0,0) scale(1);opacity:.55;}
+      40% {transform:translate3d(18px,-26px,0) scale(1.04);opacity:.9;}
+      100%{transform:translate3d(-16px,-10px,0) scale(1.02);opacity:.6;}
     }
 
     /* LAYOUT */
@@ -152,7 +159,7 @@
       outline:none;
       text-decoration:none;
       display:flex;
-      justify-content:flex-start;   /* rata kiri */
+      justify-content:flex-start;
       align-items:center;
       padding:12px 16px;
       border-radius:var(--radius-btn);
@@ -201,6 +208,11 @@
       color:#ffffff;
     }
     .btn-icon svg{
+      width:18px;
+      height:18px;
+      display:block;
+    }
+    .btn-icon img{
       width:18px;
       height:18px;
       display:block;
@@ -281,6 +293,21 @@
         </span>
       </a>
 
+      <!-- GRUP WHATSAPP -->
+      <a class="link-btn" href="#" target="_blank" rel="noopener">
+        <!-- GANTI href "#" KE LINK GRUP WA LU -->
+        <span class="btn-content">
+          <span class="btn-icon">
+            <!-- ICON WA STYLE -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4a7 7 0 0 0-6.06 10.5L5 20l3.7-1.88A7 7 0 1 0 12 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M10.6 9.1l.4 1.3a1.2 1.2 0 0 1-.2 1l-.3.4a3.8 3.8 0 0 0 1.9 1.9l.4-.3a1.2 1.2 0 0 1 1-.2l1.3.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="btn-text">Grup WhatsApp</span>
+        </span>
+      </a>
+
       <!-- AKSES EMAIL -->
       <a class="link-btn" href="https://vanzmail.web.id" target="_blank" rel="noopener">
         <span class="btn-content">
@@ -326,16 +353,15 @@
         </span>
       </a>
 
-      <!-- ADMIN & INFO (placeholder) -->
-      <a class="link-btn" href="#" title="Link info/admin khusus">
+      <!-- SOSIAL MEDIA (pakai globe putih PNG transparan) -->
+      <a class="link-btn" href="#" title="Sosial media VanzShop" target="_blank" rel="noopener">
+        <!-- GANTI href "#" KE LINK LANDING SOSMED / LINKTREE LU -->
         <span class="btn-content">
           <span class="btn-icon">
-            <!-- ICON PHONE -->
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M9.5 4.5l-2 1.2a1 1 0 0 0-.46 1.18 13 13 0 0 0 6.08 7.07 1 1 0 0 0 1.07-.07l1.9-1.4a1 1 0 0 1 1.12.02l2.2 1.7a1 1 0 0 1 .11 1.5l-1.4 1.43c-.7.71-1.76 1-2.72.71-2.62-.8-6.07-2.86-8.74-5.54C4.9 11.1 2.85 7.64 2.05 5.02 1.77 4.06 2.05 3 2.76 2.3l1.42-1.42a1 1 0 0 1 1.5.12l1.7 2.2a1 1 0 0 1-.08 1.3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-            </svg>
+            <!-- TARO FILE globe.png (globe putih transparan) DI ROOT PROJECT -->
+            <img src="globe.png" alt="Sosial Media">
           </span>
-          <span class="btn-text">Admin & Info</span>
+          <span class="btn-text">Sosial Media</span>
         </span>
       </a>
 
