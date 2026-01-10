@@ -246,16 +246,15 @@
       opacity:.9;
     }
 
-    /* ===== FULL-WIDTH LOGO STRIP (NO CARD, NO BORDER) ===== */
+    /* ===== FULL-WIDTH LOGO STRIP (INSIDE MAIN) ===== */
     .logo-strip{
       width:100vw;
-      margin:18px 0 0;
+      margin:22px 0 0;
       position:relative;
       left:50%;
       transform:translateX(-50%);
-      padding:12px 0;
+      padding:10px 0 0;
     }
-
     .strip-title{
       text-align:center;
       font-size:11px;
@@ -269,9 +268,8 @@
       height:64px;
       overflow:hidden;
       position:relative;
-      /* subtle edge fade */
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-              mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
     }
     .track{
       display:flex;
@@ -321,7 +319,6 @@
 </head>
 
 <body>
-  <!-- background (KEEP) -->
   <div class="page-bg"></div>
   <div class="warm"></div>
   <div class="orb orb-1"></div>
@@ -330,7 +327,6 @@
   <div class="orb orb-4"></div>
 
   <main class="shell">
-    <!-- ===== Landing utama ===== -->
     <section class="card">
       <div class="logo-wrap">
         <div class="logo-circle">
@@ -444,71 +440,71 @@
         © 2025 VanzShop.com · 🔒 Aman · ⚡ Cepat · 🛡️ Bergaransi
       </div>
     </section>
+
+    <!-- ===== FULL WIDTH LOGO STRIP (NOW UNDER THE CARD) ===== -->
+    <section class="logo-strip">
+      <div class="strip-title">Trusted by Brands</div>
+
+      <div class="marquee row1">
+        <div class="track">
+          <!-- SET A -->
+          <div class="item"><img class="logo" src="hyundai.png" alt="hyundai"></div>
+          <div class="item"><img class="logo" src="bca.png" alt="bca"></div>
+          <div class="item"><img class="logo" src="bri.png" alt="bri"></div>
+          <div class="item"><img class="logo" src="mandiri.png" alt="mandiri"></div>
+          <div class="item"><img class="logo" src="prudential.png" alt="prudential"></div>
+          <div class="item"><img class="logo" src="bni.png" alt="bni"></div>
+          <div class="item"><img class="logo" src="bsi.png" alt="bsi"></div>
+          <div class="item"><img class="logo" src="oppo.png" alt="oppo"></div>
+          <div class="item"><img class="logo" src="telkomsel.png" alt="telkomsel"></div>
+          <div class="item"><img class="logo" src="iqos.png" alt="iqos"></div>
+          <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
+          <div class="item"><img class="logo" src="woods.png" alt="woods"></div>
+
+          <!-- SET B -->
+          <div class="item"><img class="logo" src="hyundai.png" alt="hyundai"></div>
+          <div class="item"><img class="logo" src="bca.png" alt="bca"></div>
+          <div class="item"><img class="logo" src="bri.png" alt="bri"></div>
+          <div class="item"><img class="logo" src="mandiri.png" alt="mandiri"></div>
+          <div class="item"><img class="logo" src="prudential.png" alt="prudential"></div>
+          <div class="item"><img class="logo" src="bni.png" alt="bni"></div>
+          <div class="item"><img class="logo" src="bsi.png" alt="bsi"></div>
+          <div class="item"><img class="logo" src="oppo.png" alt="oppo"></div>
+          <div class="item"><img class="logo" src="telkomsel.png" alt="telkomsel"></div>
+          <div class="item"><img class="logo" src="iqos.png" alt="iqos"></div>
+          <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
+          <div class="item"><img class="logo" src="woods.png" alt="woods"></div>
+        </div>
+      </div>
+
+      <div class="marquee row2" style="margin-top:10px;">
+        <div class="track">
+          <!-- SET A -->
+          <div class="item"><img class="logo" src="vespa.png" alt="vespa"></div>
+          <div class="item"><img class="logo" src="tugu.png" alt="tugu"></div>
+          <div class="item"><img class="logo" src="pocky.png" alt="pocky"></div>
+          <div class="item"><img class="logo" src="bahana.png" alt="bahana"></div>
+          <div class="item"><img class="logo" src="astrafinancial.png" alt="astrafinancial"></div>
+          <div class="item"><img class="logo" src="astra.png" alt="astra"></div>
+          <div class="item"><img class="logo" src="mirae.png" alt="mirae"></div>
+          <div class="item"><img class="logo" src="morinaga.png" alt="morinaga"></div>
+          <div class="item"><img class="logo" src="bjb.png" alt="bjb"></div>
+          <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
+
+          <!-- SET B -->
+          <div class="item"><img class="logo" src="vespa.png" alt="vespa"></div>
+          <div class="item"><img class="logo" src="tugu.png" alt="tugu"></div>
+          <div class="item"><img class="logo" src="pocky.png" alt="pocky"></div>
+          <div class="item"><img class="logo" src="bahana.png" alt="bahana"></div>
+          <div class="item"><img class="logo" src="astrafinancial.png" alt="astrafinancial"></div>
+          <div class="item"><img class="logo" src="astra.png" alt="astra"></div>
+          <div class="item"><img class="logo" src="mirae.png" alt="mirae"></div>
+          <div class="item"><img class="logo" src="morinaga.png" alt="morinaga"></div>
+          <div class="item"><img class="logo" src="bjb.png" alt="bjb"></div>
+          <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
+        </div>
+      </div>
+    </section>
   </main>
-
-  <!-- ===== FULL-WIDTH LOGO STRIP (NO PAYMENT, NO CARD, NO BORDER) ===== -->
-  <section class="logo-strip">
-    <div class="strip-title">Trusted by Brands</div>
-
-    <div class="marquee row1">
-      <div class="track">
-        <!-- SET A -->
-        <div class="item"><img class="logo" src="hyundai.png" alt="hyundai"></div>
-        <div class="item"><img class="logo" src="bca.png" alt="bca"></div>
-        <div class="item"><img class="logo" src="bri.png" alt="bri"></div>
-        <div class="item"><img class="logo" src="mandiri.png" alt="mandiri"></div>
-        <div class="item"><img class="logo" src="prudential.png" alt="prudential"></div>
-        <div class="item"><img class="logo" src="bni.png" alt="bni"></div>
-        <div class="item"><img class="logo" src="bsi.png" alt="bsi"></div>
-        <div class="item"><img class="logo" src="oppo.png" alt="oppo"></div>
-        <div class="item"><img class="logo" src="telkomsel.png" alt="telkomsel"></div>
-        <div class="item"><img class="logo" src="iqos.png" alt="iqos"></div>
-        <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
-        <div class="item"><img class="logo" src="woods.png" alt="woods"></div>
-
-        <!-- SET B (duplicate) -->
-        <div class="item"><img class="logo" src="hyundai.png" alt="hyundai"></div>
-        <div class="item"><img class="logo" src="bca.png" alt="bca"></div>
-        <div class="item"><img class="logo" src="bri.png" alt="bri"></div>
-        <div class="item"><img class="logo" src="mandiri.png" alt="mandiri"></div>
-        <div class="item"><img class="logo" src="prudential.png" alt="prudential"></div>
-        <div class="item"><img class="logo" src="bni.png" alt="bni"></div>
-        <div class="item"><img class="logo" src="bsi.png" alt="bsi"></div>
-        <div class="item"><img class="logo" src="oppo.png" alt="oppo"></div>
-        <div class="item"><img class="logo" src="telkomsel.png" alt="telkomsel"></div>
-        <div class="item"><img class="logo" src="iqos.png" alt="iqos"></div>
-        <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
-        <div class="item"><img class="logo" src="woods.png" alt="woods"></div>
-      </div>
-    </div>
-
-    <div class="marquee row2" style="margin-top:10px;">
-      <div class="track">
-        <!-- SET A -->
-        <div class="item"><img class="logo" src="vespa.png" alt="vespa"></div>
-        <div class="item"><img class="logo" src="tugu.png" alt="tugu"></div>
-        <div class="item"><img class="logo" src="pocky.png" alt="pocky"></div>
-        <div class="item"><img class="logo" src="bahana.png" alt="bahana"></div>
-        <div class="item"><img class="logo" src="astrafinancial.png" alt="astrafinancial"></div>
-        <div class="item"><img class="logo" src="astra.png" alt="astra"></div>
-        <div class="item"><img class="logo" src="mirae.png" alt="mirae"></div>
-        <div class="item"><img class="logo" src="morinaga.png" alt="morinaga"></div>
-        <div class="item"><img class="logo" src="bjb.png" alt="bjb"></div>
-        <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
-
-        <!-- SET B (duplicate) -->
-        <div class="item"><img class="logo" src="vespa.png" alt="vespa"></div>
-        <div class="item"><img class="logo" src="tugu.png" alt="tugu"></div>
-        <div class="item"><img class="logo" src="pocky.png" alt="pocky"></div>
-        <div class="item"><img class="logo" src="bahana.png" alt="bahana"></div>
-        <div class="item"><img class="logo" src="astrafinancial.png" alt="astrafinancial"></div>
-        <div class="item"><img class="logo" src="astra.png" alt="astra"></div>
-        <div class="item"><img class="logo" src="mirae.png" alt="mirae"></div>
-        <div class="item"><img class="logo" src="morinaga.png" alt="morinaga"></div>
-        <div class="item"><img class="logo" src="bjb.png" alt="bjb"></div>
-        <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
-      </div>
-    </div>
-  </section>
 </body>
 </html>
