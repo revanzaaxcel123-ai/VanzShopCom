@@ -23,10 +23,9 @@
       --shadow-soft:0 28px 80px rgba(0,0,0,0.9);
 
       /* marquee */
-      --gap:56px;
-      --row-h:86px;
-      --speed-1: 50s;
-      --speed-2: 42s;
+      --gap:72px;
+      --speed-1: 42s;
+      --speed-2: 52s;
     }
 
     *,*::before,*::after{box-sizing:border-box;}
@@ -39,23 +38,21 @@
       display:flex;
       align-items:flex-start;
       justify-content:center;
-      overflow-x:hidden; /* biar marquee gak bikin horizontal scroll */
+      overflow-x:hidden;
     }
 
-    /* ===== Background style (KEEP THIS) ===== */
+    /* ===== Background style (KEEP) ===== */
     .page-bg{
       position:fixed;
       inset:0;
       z-index:0;
       pointer-events:none;
-      /* grid */
       background-image:
         linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
       background-size: 64px 64px;
       opacity:.55;
     }
-    /* warm glow kanan (kuning alus) */
     .warm{
       position:fixed;
       inset:0;
@@ -70,7 +67,6 @@
       opacity:.9;
     }
 
-    /* orbs */
     .orb{
       position:fixed;
       border-radius:999px;
@@ -110,7 +106,7 @@
       border:1px solid rgba(255,255,255,0.04);
     }
 
-    /* Logo */
+    /* LOGO */
     .logo-wrap{
       display:flex;
       justify-content:center;
@@ -163,7 +159,7 @@
       font-size:.78rem;
     }
 
-    /* Buttons */
+    /* BUTTON BASE */
     .link-btn{
       width:100%;
       border:none;
@@ -250,67 +246,32 @@
       opacity:.9;
     }
 
-    /* ===== Support Payment block ===== */
-    .support{
-      margin:18px 6px 0;
-      padding:14px 14px;
-      border-radius:22px;
-      background:rgba(17,17,24,0.65);
-      border:1px solid rgba(255,255,255,0.06);
-      backdrop-filter: blur(6px);
-    }
-    .support-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:10px;
-    }
-    .support-title{
-      font-size:.78rem;
-      letter-spacing:.22em;
-      opacity:.65;
-      text-transform:uppercase;
-    }
-    .support-badge{
-      font-size:.72rem;
-      padding:4px 10px;
-      border-radius:999px;
-      border:1px solid rgba(247,212,106,0.5);
-      color:var(--accent-strong);
-      background:rgba(0,0,0,0.35);
-      white-space:nowrap;
-    }
-    .pay-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-    .pay-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.06);
-      background:rgba(16,16,24,0.7);
-      color:rgba(255,255,255,0.78);
-      font-size:.82rem;
-      user-select:none;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:999px;
-      background:rgba(247,212,106,0.9);
-      box-shadow:0 0 10px rgba(247,212,106,0.35);
+    /* ===== FULL-WIDTH LOGO STRIP (NO CARD, NO BORDER) ===== */
+    .logo-strip{
+      width:100vw;
+      margin:18px 0 0;
+      position:relative;
+      left:50%;
+      transform:translateX(-50%);
+      padding:12px 0;
     }
 
-    /* ===== Marquee (Mini) ===== */
+    .strip-title{
+      text-align:center;
+      font-size:11px;
+      letter-spacing:.32em;
+      opacity:.6;
+      margin:0 0 10px;
+      user-select:none;
+    }
+
     .marquee{
-      height:var(--row-h);
+      height:64px;
       overflow:hidden;
       position:relative;
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
-              mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+      /* subtle edge fade */
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
     }
     .track{
       display:flex;
@@ -327,6 +288,7 @@
       from{ transform:translateX(0); }
       to  { transform:translateX(-50%); }
     }
+
     .item{
       display:flex;
       align-items:center;
@@ -340,34 +302,11 @@
       filter:grayscale(0%);
       transform:translateY(-1px);
     }
+
     .logo{
-      height:38px;
+      height:26px;
       width:auto;
       display:block;
-    }
-
-    /* Mini section sizing (kecil dibawah support payment) */
-    .mini-logos{
-      margin:18px 6px 0;
-      padding:14px 14px 10px;
-      border-radius:22px;
-      background:rgba(17,17,24,0.45);
-      border:1px solid rgba(255,255,255,0.06);
-      backdrop-filter: blur(6px);
-    }
-    .mini-logos .headline{
-      text-align:center;
-      font-size:11px;
-      letter-spacing:.32em;
-      opacity:.6;
-      margin:4px 0 12px;
-      user-select:none;
-    }
-    .mini-logos .marquee{
-      height:64px;
-    }
-    .mini-logos .logo{
-      height:26px;
       opacity:.86;
     }
 
@@ -375,7 +314,8 @@
       .headline-wrap h1{font-size:1.4rem;}
       .btn-text{font-size:.9rem;}
       :root{ --gap:40px; }
-      .mini-logos .logo{ height:24px; }
+      .logo{ height:22px; }
+      .marquee{ height:58px; }
     }
   </style>
 </head>
@@ -390,7 +330,7 @@
   <div class="orb orb-4"></div>
 
   <main class="shell">
-    <!-- ===== Landing utama (yang tadi) ===== -->
+    <!-- ===== Landing utama ===== -->
     <section class="card">
       <div class="logo-wrap">
         <div class="logo-circle">
@@ -504,86 +444,71 @@
         © 2025 VanzShop.com · 🔒 Aman · ⚡ Cepat · 🛡️ Bergaransi
       </div>
     </section>
-
-    <!-- ===== Support Payment (placeholder, edit bebas) ===== -->
-    <section class="support">
-      <div class="support-top">
-        <div class="support-title">Support Payment</div>
-        <div class="support-badge">Fast Confirm</div>
-      </div>
-      <div class="pay-row">
-        <span class="pay-pill"><span class="dot"></span>Transfer Bank</span>
-        <span class="pay-pill"><span class="dot"></span>E-Wallet</span>
-        <span class="pay-pill"><span class="dot"></span>QRIS</span>
-        <span class="pay-pill"><span class="dot"></span>Virtual Account</span>
-      </div>
-    </section>
-
-    <!-- ===== Mini teleprompter (kecil, dibawah support payment) ===== -->
-    <section class="mini-logos">
-      <div class="headline">Trusted by Brands</div>
-
-      <div class="marquee row1">
-        <div class="track">
-          <!-- SET A (sesuai nama file) -->
-          <div class="item"><img class="logo" src="oppo.png" alt="oppo"></div>
-          <div class="item"><img class="logo" src="telkomsel.png" alt="telkomsel"></div>
-          <div class="item"><img class="logo" src="iqos.png" alt="iqos"></div>
-          <div class="item"><img class="logo" src="jiwagroup.png" alt="jiwagroup"></div>
-          <div class="item"><img class="logo" src="kawanlamagroup.png" alt="kawanlamagroup"></div>
-          <div class="item"><img class="logo" src="woods.png" alt="woods"></div>
-          <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
-          <div class="item"><img class="logo" src="hyundai.png" alt="hyundai"></div>
-          <div class="item"><img class="logo" src="bca.png" alt="bca"></div>
-          <div class="item"><img class="logo" src="bri.png" alt="bri"></div>
-          <div class="item"><img class="logo" src="mandiri.png" alt="mandiri"></div>
-
-          <!-- SET B (duplikat biar loop mulus) -->
-          <div class="item"><img class="logo" src="oppo.png" alt="oppo"></div>
-          <div class="item"><img class="logo" src="telkomsel.png" alt="telkomsel"></div>
-          <div class="item"><img class="logo" src="iqos.png" alt="iqos"></div>
-          <div class="item"><img class="logo" src="jiwagroup.png" alt="jiwagroup"></div>
-          <div class="item"><img class="logo" src="kawanlamagroup.png" alt="kawanlamagroup"></div>
-          <div class="item"><img class="logo" src="woods.png" alt="woods"></div>
-          <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
-          <div class="item"><img class="logo" src="hyundai.png" alt="hyundai"></div>
-          <div class="item"><img class="logo" src="bca.png" alt="bca"></div>
-          <div class="item"><img class="logo" src="bri.png" alt="bri"></div>
-          <div class="item"><img class="logo" src="mandiri.png" alt="mandiri"></div>
-        </div>
-      </div>
-
-      <!-- optional 2nd mini row (hapus kalau gak perlu) -->
-      <div class="marquee row2" style="margin-top:10px;">
-        <div class="track">
-          <div class="item"><img class="logo" src="vespa.png" alt="vespa"></div>
-          <div class="item"><img class="logo" src="tugu.png" alt="tugu"></div>
-          <div class="item"><img class="logo" src="pocky.png" alt="pocky"></div>
-          <div class="item"><img class="logo" src="prudential.png" alt="prudential"></div>
-          <div class="item"><img class="logo" src="bni.png" alt="bni"></div>
-          <div class="item"><img class="logo" src="bsi.png" alt="bsi"></div>
-          <div class="item"><img class="logo" src="bjb.png" alt="bjb"></div>
-          <div class="item"><img class="logo" src="bahana.png" alt="bahana"></div>
-          <div class="item"><img class="logo" src="astrafinancial.png" alt="astrafinancial"></div>
-          <div class="item"><img class="logo" src="astra.png" alt="astra"></div>
-          <div class="item"><img class="logo" src="mirae.png" alt="mirae"></div>
-          <div class="item"><img class="logo" src="morinaga.png" alt="morinaga"></div>
-
-          <div class="item"><img class="logo" src="vespa.png" alt="vespa"></div>
-          <div class="item"><img class="logo" src="tugu.png" alt="tugu"></div>
-          <div class="item"><img class="logo" src="pocky.png" alt="pocky"></div>
-          <div class="item"><img class="logo" src="prudential.png" alt="prudential"></div>
-          <div class="item"><img class="logo" src="bni.png" alt="bni"></div>
-          <div class="item"><img class="logo" src="bsi.png" alt="bsi"></div>
-          <div class="item"><img class="logo" src="bjb.png" alt="bjb"></div>
-          <div class="item"><img class="logo" src="bahana.png" alt="bahana"></div>
-          <div class="item"><img class="logo" src="astrafinancial.png" alt="astrafinancial"></div>
-          <div class="item"><img class="logo" src="astra.png" alt="astra"></div>
-          <div class="item"><img class="logo" src="mirae.png" alt="mirae"></div>
-          <div class="item"><img class="logo" src="morinaga.png" alt="morinaga"></div>
-        </div>
-      </div>
-    </section>
   </main>
+
+  <!-- ===== FULL-WIDTH LOGO STRIP (NO PAYMENT, NO CARD, NO BORDER) ===== -->
+  <section class="logo-strip">
+    <div class="strip-title">Trusted by Brands</div>
+
+    <div class="marquee row1">
+      <div class="track">
+        <!-- SET A -->
+        <div class="item"><img class="logo" src="hyundai.png" alt="hyundai"></div>
+        <div class="item"><img class="logo" src="bca.png" alt="bca"></div>
+        <div class="item"><img class="logo" src="bri.png" alt="bri"></div>
+        <div class="item"><img class="logo" src="mandiri.png" alt="mandiri"></div>
+        <div class="item"><img class="logo" src="prudential.png" alt="prudential"></div>
+        <div class="item"><img class="logo" src="bni.png" alt="bni"></div>
+        <div class="item"><img class="logo" src="bsi.png" alt="bsi"></div>
+        <div class="item"><img class="logo" src="oppo.png" alt="oppo"></div>
+        <div class="item"><img class="logo" src="telkomsel.png" alt="telkomsel"></div>
+        <div class="item"><img class="logo" src="iqos.png" alt="iqos"></div>
+        <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
+        <div class="item"><img class="logo" src="woods.png" alt="woods"></div>
+
+        <!-- SET B (duplicate) -->
+        <div class="item"><img class="logo" src="hyundai.png" alt="hyundai"></div>
+        <div class="item"><img class="logo" src="bca.png" alt="bca"></div>
+        <div class="item"><img class="logo" src="bri.png" alt="bri"></div>
+        <div class="item"><img class="logo" src="mandiri.png" alt="mandiri"></div>
+        <div class="item"><img class="logo" src="prudential.png" alt="prudential"></div>
+        <div class="item"><img class="logo" src="bni.png" alt="bni"></div>
+        <div class="item"><img class="logo" src="bsi.png" alt="bsi"></div>
+        <div class="item"><img class="logo" src="oppo.png" alt="oppo"></div>
+        <div class="item"><img class="logo" src="telkomsel.png" alt="telkomsel"></div>
+        <div class="item"><img class="logo" src="iqos.png" alt="iqos"></div>
+        <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
+        <div class="item"><img class="logo" src="woods.png" alt="woods"></div>
+      </div>
+    </div>
+
+    <div class="marquee row2" style="margin-top:10px;">
+      <div class="track">
+        <!-- SET A -->
+        <div class="item"><img class="logo" src="vespa.png" alt="vespa"></div>
+        <div class="item"><img class="logo" src="tugu.png" alt="tugu"></div>
+        <div class="item"><img class="logo" src="pocky.png" alt="pocky"></div>
+        <div class="item"><img class="logo" src="bahana.png" alt="bahana"></div>
+        <div class="item"><img class="logo" src="astrafinancial.png" alt="astrafinancial"></div>
+        <div class="item"><img class="logo" src="astra.png" alt="astra"></div>
+        <div class="item"><img class="logo" src="mirae.png" alt="mirae"></div>
+        <div class="item"><img class="logo" src="morinaga.png" alt="morinaga"></div>
+        <div class="item"><img class="logo" src="bjb.png" alt="bjb"></div>
+        <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
+
+        <!-- SET B (duplicate) -->
+        <div class="item"><img class="logo" src="vespa.png" alt="vespa"></div>
+        <div class="item"><img class="logo" src="tugu.png" alt="tugu"></div>
+        <div class="item"><img class="logo" src="pocky.png" alt="pocky"></div>
+        <div class="item"><img class="logo" src="bahana.png" alt="bahana"></div>
+        <div class="item"><img class="logo" src="astrafinancial.png" alt="astrafinancial"></div>
+        <div class="item"><img class="logo" src="astra.png" alt="astra"></div>
+        <div class="item"><img class="logo" src="mirae.png" alt="mirae"></div>
+        <div class="item"><img class="logo" src="morinaga.png" alt="morinaga"></div>
+        <div class="item"><img class="logo" src="bjb.png" alt="bjb"></div>
+        <div class="item"><img class="logo" src="toyota.png" alt="toyota"></div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
