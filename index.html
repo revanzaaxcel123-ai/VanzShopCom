@@ -431,6 +431,21 @@
       *,*::before,*::after{animation:none!important;transition:none!important}
       .reveal{opacity:1;transform:none;filter:none}
     }
+  
+    /* =========================================================
+       STABIL DI HP — matikan efek berat yang bikin UI kedip / hilang
+       ========================================================= */
+    @media (hover:none),(pointer:coarse){
+      :root{--card:rgba(14,14,21,.95);--nav-bg:rgba(10,10,16,.95);--nav-bg-2:rgba(10,10,16,.97)}
+      [data-theme="light"]{--card:rgba(255,255,255,.96);--nav-bg:rgba(255,255,255,.95);--nav-bg-2:rgba(255,255,255,.97)}
+      *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+      .card,.panel{transform:none!important}
+      .reveal{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+      .bg-beam,.bg-noise,.bg-spot{display:none!important}
+      .bg-grid,.orb{animation:none!important}
+      .logo-halo::after{filter:none}
+      .slide{filter:none!important}
+    }
   </style>
 </head>
 <body>
@@ -456,13 +471,14 @@
       },
 
       // Daftar tombol.
-      // ikon yang tersedia: cart rocket whatsapp mail doc tools faq globe telegram star gift lock
+      // ikon yang tersedia: cart rocket whatsapp mail doc tools faq globe telegram star gift lock crown
       // tag: (opsional) label kecil, misal "Baru" / "Promo"
       // label: (opsional) teks pop-up di kanan mouse, default = judul tombol
       tombol: [
         { judul: "Suntik Sosmed",     sub: "Followers, likes & views instan",  link: "https://suntik-sosmed.vanzshop.com/", ikon: "rocket" },
         { judul: "Grup WhatsApp",     sub: "Info promo & update stok terbaru",  link: "https://chat.whatsapp.com/DQ2PsowpGt5FxhQDAS2sAz?mode=gi_t", ikon: "whatsapp" },
         { judul: "Akses Email",       sub: "Buka inbox email akun pesanan",     link: "https://vanzmail.web.id", ikon: "mail" },
+        { judul: "Join Reseller",     sub: "Info harga reseller & cara bergabung", link: "https://wa.me/62895415204928?text=Halo%20admin%20VanzShop%2C%20saya%20mau%20join%20reseller.%20Boleh%20minta%20info%20harga%20%26%20caranya%3F", ikon: "crown" },
         { judul: "Ketentuan Garansi", sub: "Aturan garansi tiap produk",        link: "https://ketentuan-garansi.vanzshop.com", ikon: "doc" },
         { judul: "Tools",             sub: "Kumpulan tools gratis",             link: "https://tools.vanzshop.com/", ikon: "tools" },
         { judul: "FAQ",               sub: "Pertanyaan yang sering ditanya",    link: "https://faq-website.vanzshop.com/", ikon: "faq" },
@@ -528,8 +544,8 @@
 
   <section class="brands reveal" aria-label="Dipercaya oleh">
     <div class="brands-title">Trusted by Brands</div>
-    <div class="marquee" style="--dur:42s"><div class="track" id="row1"></div></div>
-    <div class="marquee rev" style="--dur:52s"><div class="track" id="row2"></div></div>
+    <div class="marquee"><div class="track" id="row1"></div></div>
+    <div class="marquee rev"><div class="track" id="row2"></div></div>
   </section>
 
   <div class="c-ring" id="cRing" aria-hidden="true"></div>
@@ -563,6 +579,7 @@
       "globe":'<circle cx="12" cy="12" r="8"/><path d="M4 12h16"/><path d="M12 4c2.6 2.4 4 5.1 4 8s-1.4 5.6-4 8c-2.6-2.4-4-5.1-4-8s1.4-5.6 4-8z"/>',
       // tambahan dengan gaya yang sama
       "telegram":'<path d="M20 5 4 11.2l5 1.8 1.8 5.5 2.7-3 4 3z"/><path d="m9 13 8-6"/>',
+      "crown":'<path d="M4 8l4 4 4-7 4 7 4-4-1.5 10h-13z"/><path d="M5.5 20.5h13"/>',
       "star":'<path d="m12 4 2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.4l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/>',
       "gift":'<rect x="4" y="9" width="16" height="4" rx="1"/><path d="M5.5 13v7h13v-7M12 9v11M12 9s-1.5-4.5-4-3.5S9 9 12 9zm0 0s1.5-4.5 4-3.5S15 9 12 9z"/>',
       "lock":'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
@@ -621,11 +638,38 @@
     else { $("#contact").remove(); $(".sep").remove(); }
 
     const fmt = C.formatGambar || "png";
-    const row = list => { const set = list.map(n => `<div class="brand" data-cursor="${esc(n.charAt(0).toUpperCase() + n.slice(1))}"><img src="${esc(n)}.${fmt}" alt="${esc(n)}" loading="lazy" onerror="this.parentNode.remove()"></div>`).join(""); return set + set; };
+    const setHTML = list => list.map(n => `<div class="brand" data-cursor="${esc(n.charAt(0).toUpperCase() + n.slice(1))}"><img src="${esc(n)}.${fmt}" alt="${esc(n)}" onerror="this.parentNode.remove()"></div>`).join("");
     const b1 = C.brandBaris1 || [], b2 = C.brandBaris2 || [];
-    if (b1.length) $("#row1").innerHTML = row(b1); else $("#row1").parentNode.remove();
-    if (b2.length) $("#row2").innerHTML = row(b2); else $("#row2").parentNode.remove();
+    // isi track sampai lebih lebar dari layar (aman di zoom 25–50% / monitor lebar), lalu digandakan biar looping mulus
+    function fillRow(track, list, speed) {
+      if (!track) return;
+      track.innerHTML = setHTML(list);
+      const fit = () => {
+        const one = track.scrollWidth || 1;
+        const gapPx = parseFloat(getComputedStyle(track).columnGap) || 0;
+        const reps = Math.max(1, Math.ceil((innerWidth * 1.1) / (one + gapPx)));
+        const half = Array(reps).fill(setHTML(list)).join("");
+        track.innerHTML = half + half;
+        const halfW = (one + gapPx) * reps;
+        track.style.setProperty("--dur", `${Math.max(20, halfW / speed)}s`);
+        track.parentNode.style.setProperty("--dur", `${Math.max(20, halfW / speed)}s`);
+      };
+      const imgs = [...track.querySelectorAll("img")];
+      let left = imgs.length, done = false;
+      const ready = () => { if (done) return; done = true; fit(); };
+      if (!left) ready();
+      imgs.forEach(im => {
+        if (im.complete) { if (--left <= 0) ready(); }
+        else { im.addEventListener("load", () => { if (--left <= 0) ready(); }); im.addEventListener("error", () => { if (--left <= 0) ready(); }); }
+      });
+      setTimeout(ready, 2500);
+      return () => { track.innerHTML = setHTML(list); done = false; left = 0; fit(); };
+    }
+    const r1 = b1.length ? fillRow($("#row1"), b1, 45) : ($("#row1").parentNode.remove(), null);
+    const r2 = b2.length ? fillRow($("#row2"), b2, 38) : ($("#row2").parentNode.remove(), null);
     if (!b1.length && !b2.length) $(".brands").remove();
+    let lastW = innerWidth, mt;
+    addEventListener("resize", () => { clearTimeout(mt); mt = setTimeout(() => { if (Math.abs(innerWidth - lastW) < 40) return; lastW = innerWidth; r1 && r1(); r2 && r2(); }, 250); });
 
     $("#themeBtn").innerHTML = icon("moon", "ico moon-i") + icon("sun", "ico sun");
     hydrate();
@@ -726,7 +770,7 @@
     const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(en => {
       if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
     }), { threshold: .08 }) : null;
-    $$(".reveal").forEach(el => io ? io.observe(el) : el.classList.add("in"));
+    $$(".reveal").forEach(el => (io && fine) ? io.observe(el) : el.classList.add("in"));
 
     /* =====================================================
        CUSTOM CURSOR (khusus mouse, otomatis mati di HP)
@@ -776,7 +820,7 @@
     function size() {
       const dpr = Math.min(devicePixelRatio || 1, 2);
       W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const n = Math.min(70, Math.round(W * H / 22000));
+      const n = Math.min(fine ? 70 : 24, Math.round(W * H / 22000));
       parts = Array.from({ length: n }, () => ({
         x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.4 + .3,
         vy: -(Math.random() * .25 + .05), vx: (Math.random() - .5) * .12,
@@ -786,7 +830,7 @@
     }
     function draw(t) {
       ctx.clearRect(0, 0, W, H);
-      ctx.shadowColor = `rgba(${dustRGB},.8)`; ctx.shadowBlur = 6;
+      ctx.shadowColor = `rgba(${dustRGB},.8)`; ctx.shadowBlur = fine ? 6 : 0;
       for (const p of parts) {
         const a = p.a * (.6 + .4 * Math.sin(p.ph + t * p.tw * .06));
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832);
